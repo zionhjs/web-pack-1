@@ -359,6 +359,17 @@ def report(request):
     else:
         return redirect('/')
 
+def get_clock_add_report(request):
+    this_id = request.session.get('this_user_id')
+    this_user = User.objects.get(id=this_id)
+    if this_id:
+        if request.POST['get_clock']:
+            this_clock_id = request.POST['get_clock']
+            this_clock = Clock.objects.get(id = this_clock_id)
+            
+    else:
+        return redirect('/')
+
 
 def report_verify(request):
     this_id = request.session.get('this_user_id')
@@ -606,12 +617,25 @@ def award_extra_verify(request, uid, cid):
         return redirect('/')
 
 
-def edit_employee_verify(request, id):
+def edit_employee_verify(request, uid):
     this_id = request.session.get('this_user_id')
     this_user = User.objects.get(id=this_id)
     if this_id:
-
-        return redirect('/admin')
+        errors = User.objects.basic_validator_edit(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect('/admin')
+        else:
+            edit_user = User.objects.get(id = uid)
+            edit_user.first_name = request.POST['first_name']
+            edit_user.last_name = request.POST['last_name']
+            edit_user.email = request.POST['email']
+            edit_user.points_rate = float(request.POST['points_rate'])
+            edit_user.total_points = float(request.POST['total_points'])
+            edit_user.save()
+            messages.success(request, "Edit Employee Successfully!")
+            return redirect('/admin')
     else:
         return redirect('/')
 
@@ -666,6 +690,8 @@ def dailyupdates(request):
             last_clockout_choices.append(last_clockout_choice)
             last_clockout_choice += timedelta(minutes=30)
 
+        
+
         context = {
             "this_user": this_user,
             "employees": User.objects.all(),
@@ -679,5 +705,16 @@ def dailyupdates(request):
             "level_range": [0,1,2,3,4,5,6,7,8,9]
         }
         return render(request, 'dailyupdates.html', context)
+    else:
+        return redirect('/')
+
+def get_employee_admin(request):
+    this_id = request.session.get('this_user_id')
+    this_user = User.objects.get(id=this_id)
+    if this_id:
+        employee_id = request.POST['show_employee_id']
+        this_employee = User.objects.get(id=employee_id)
+        request.session['show_employee_id'] = employee_id
+        return redirect('/dailyupdates')
     else:
         return redirect('/')
