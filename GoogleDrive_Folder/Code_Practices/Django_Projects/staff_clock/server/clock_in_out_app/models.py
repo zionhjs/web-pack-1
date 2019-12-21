@@ -53,17 +53,6 @@ class User(models.Model):
     objects = UserManager()
 
 
-class DailyReport(models.Model):
-    recipients = models.CharField(max_length=255)
-    done = models.CharField(max_length=255)
-    challenges = models.CharField(max_length=255)
-    helps = models.CharField(max_length=255)
-    user = models.ForeignKey(User, related_name="reports",
-                             on_delete=models.CASCADE)  # one to many
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-
 class Clock(models.Model):
     clockin = models.DateTimeField(null=True, blank=True)
     clockout = models.DateTimeField(null=True, blank=True)
@@ -72,6 +61,19 @@ class Clock(models.Model):
     task_des = models.CharField(max_length=255, default="")
     user = models.ForeignKey(User, related_name="clocks",
                              on_delete=models.CASCADE)  # one to many
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class DailyReport(models.Model):
+    recipients = models.CharField(max_length=255)
+    done = models.CharField(max_length=255)
+    challenges = models.CharField(max_length=255)
+    helps = models.CharField(max_length=255)
+    user = models.ForeignKey(User, related_name="user_reports",
+                             on_delete=models.CASCADE)  # one to many
+    clock = models.ForeignKey(
+        Clock, related_name="clock_reports", on_delete=models.CASCADE, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

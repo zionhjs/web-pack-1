@@ -364,9 +364,8 @@ def get_clock_add_report(request):
     this_user = User.objects.get(id=this_id)
     if this_id:
         if request.POST['get_clock']:
-            this_clock_id = request.POST['get_clock']
-            this_clock = Clock.objects.get(id = this_clock_id)
-            
+            request.session['report_clock_id'] = request.POST['get_clock']
+        return redirect('/report')
     else:
         return redirect('/')
 
@@ -397,9 +396,12 @@ def report_verify(request):
                 challenges = request.POST['challenges']
                 helps = request.POST['helps']
                 user = this_user
-                new_daily_report = DailyReport.objects.create(
-                    recipients=recipients, done=done, challenges=challenges, helps=helps, user=user)
-                return redirect('/report')
+                if request.session.get('report_clock_id'):
+                    clock = request.session.get('report_clock_id')
+                    new_daily_report = DailyReport.objects.create(
+                        recipients=recipients, done=done, challenges=challenges, helps=helps, user=user, clock=clock)
+                    request.session['report_clock_id'] = None
+                    return redirect('/report')
     else:
         return redirect('/')
 
