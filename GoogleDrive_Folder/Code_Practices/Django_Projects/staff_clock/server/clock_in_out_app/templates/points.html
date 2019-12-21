@@ -142,7 +142,8 @@
                         <td>
                             {% for award in clock.clock_awards.all %}
                             {% if award.admin %}
-                            <p>{{ award.admin.first_name }} {{ award.admin.last_name }}</p>
+                            <p>{{ award.admin.first_name }} {{ award.admin.last_name }} <span>+
+                                    {{ award.points }}</span></p>
                             {% else %}
                             <p>System</p>
                             {% endif %}
