@@ -266,6 +266,13 @@ def points(request):
 
         today_quote = daily_quote()
         clocks = Clock.objects.all().order_by('-created_at')
+        if clocks:
+            print("here")
+            awards = clock.clock_awards.all()
+            award_all_points = 0.0
+            for award in awards:
+                award_all_points += award.points
+                print("award points:", award_all_points)
         last_clock = Clock.objects.last()
 
         last_clockout_choice = last_clock.clockin.replace(
