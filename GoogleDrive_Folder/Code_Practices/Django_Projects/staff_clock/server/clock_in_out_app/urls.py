@@ -11,6 +11,7 @@ urlpatterns = [
     path('clockinout', views.clockinout),
     path('clockinout/get_employee', views.get_employee),
     path('clockinout/get_employee/admin', views.get_employee_admin),
+    path('points/get_employee', views.get_employee_points),
     path('clockin', views.clockin),
     path('clockout', views.clockout),
     path('clockout_lasttime', views.clockout_lasttime),

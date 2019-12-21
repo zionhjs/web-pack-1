@@ -251,7 +251,14 @@ def points(request):
                 clock_hours = round(total_secondes/3600, 3)
                 clock.clock_hours = clock_hours
                 clock_points = round(clock_hours*this_user.points_rate, 3)
-                clock.clock_points = clock_points
+                if clock.clock_awards.all():
+                    clock_allawards = 0.0
+                    awards = clock.clock_awards.all()
+                    for award in awards:
+                        print("award points:", award.points)
+                        clock_allawards += award.points
+                    print("all_extra_awards:", clock_allawards)
+                clock.clock_points = clock_points + clock_allawards
                 clock.save()
                 total_points += clock_points
             else:
@@ -266,14 +273,10 @@ def points(request):
 
         today_quote = daily_quote()
         clocks = Clock.objects.all().order_by('-created_at')
-        if clocks:
-            print("here")
-            awards = clock.clock_awards.all()
-            award_all_points = 0.0
-            for award in awards:
-                award_all_points += award.points
-                print("award points:", award_all_points)
         last_clock = Clock.objects.last()
+
+        if request.session.get("show_employee_id"):
+            clocks = clocks.filter(user = User.objects.get(id = request.session.get("show_employee_id")))
 
         last_clockout_choice = last_clock.clockin.replace(
             tzinfo=None)  # remove the timezone
@@ -289,8 +292,11 @@ def points(request):
             last_clockout_choices.append(last_clockout_choice)
             last_clockout_choice += timedelta(minutes=30)
 
+        employees = User.objects.all()
+
         context = {
             "this_user": this_user,
+            "employees":employees,
             "today_quote": today_quote,
             "this_user_points": round(this_user.total_points, 2),
             "all_users_points": all_users_points,
@@ -725,5 +731,16 @@ def get_employee_admin(request):
         this_employee = User.objects.get(id=employee_id)
         request.session['show_employee_id'] = employee_id
         return redirect('/dailyupdates')
+    else:
+        return redirect('/')
+
+def get_employee_points(request):
+    this_id = request.session.get('this_user_id')
+    this_user = User.objects.get(id=this_id)
+    if this_id:
+        employee_id = request.POST['show_employee_id']
+        this_employee = User.objects.get(id=employee_id)
+        request.session['show_employee_id'] = employee_id
+        return redirect('/points')
     else:
         return redirect('/')
