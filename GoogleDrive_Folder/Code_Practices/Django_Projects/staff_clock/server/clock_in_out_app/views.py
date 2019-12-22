@@ -410,9 +410,9 @@ def report_verify(request):
                 recipients=recipients, done=done, challenges=challenges, helps=helps, user=user)
             return redirect('/report')
         else:
-            if last_reports.created_at.date() == cur_date.date():
+            if this_user.reports.last.date() == cur_date.date():
                 messages.error(
-                    request, 'Can\'t report twice in a single-day!')
+                    request, 'Same User Can\'t report twice in a single-day!')
                 return redirect('/report')
             else:
                 recipients = request.POST['recipients']
