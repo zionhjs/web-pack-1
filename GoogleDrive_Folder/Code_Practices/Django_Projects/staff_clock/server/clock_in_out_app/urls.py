@@ -31,5 +31,5 @@ urlpatterns = [
     path('admin/edit_employee_verify/<int:uid>', views.edit_employee_verify),
 
     path('dailyupdates', views.dailyupdates),
-    path('dailyupdates/get_show_date', views.get_show_date),
+    path('dailyupdates/get_report_id', views.get_report_id),
 ]

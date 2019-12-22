@@ -69,6 +69,14 @@
         </div>
         <div class="col-md-8">
             <h1>Daily Updates</h1>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                    {{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
             <table class="table table-striped table-bordered table-hover">
                 <thead class="table-dark">
                     <tr>
@@ -94,15 +102,15 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <form action="/dailyupdates/get_show_date" method="post">
+                                            <form action="/dailyupdates/get_report_id" method="post">
                                                 {% csrf_token %}
-                                                <select name="get_show_date">
+                                                <select name="get_report_id">
                                                     <option value="">-- select a date to view the udpates
                                                         --</option>
                                                     {% for report in employee.user_reports.all %}
-                                                    <option value="{{ report.created_at }}">
+                                                    <option value="{{ report.id }}">
                                                         Report
-                                                        Date:{{ report.created_at.date }}
+                                                        Date:{{ report.created_at | date:'Y-m-d H:i'}}
                                                     </option>
                                                     {% endfor %}
                                                 </select>
@@ -117,13 +125,21 @@
                                                 <p>{{ employee.email }}</p>
                                             </div>
                                             <div class="col-md-8">
-                                                {% if employee.user_reports.first %}
+                                                {% if employee.user_reports.all %}
+                                                {% for report in employee.user_reports.all %}
+                                                <!-- {% if report.user.id == employee.id and report.id == get_report_id %} -->
+                                                {% if report.id == get_report_id %}
                                                 <h2>What I did today</h2>
-                                                <p>{{ employee.user_reports.first.done }}</p>
+                                                <p>{{ report.done }}</p>
                                                 <h2>Challenges I encountered</h2>
-                                                <p>{{ employee.user_reports.first.challenges }}</p>
+                                                <p>{{ report.challenges }}</p>
                                                 <h2>What you can do to help me</h2>
-                                                <p>{{ employee.user_report.first.helps }}</p>
+                                                <p>{{ report.helps }}</p>
+                                                {% else %}
+                                                <p>Nothing to display for now unless you select something!
+                                                    {{ report.id }}</p>
+                                                {% endif %}
+                                                {% endfor %}
                                                 {% else %}
                                                 <h2>{{ employee.first_name }} has not reported yet!</h2>
                                                 {% endif %}

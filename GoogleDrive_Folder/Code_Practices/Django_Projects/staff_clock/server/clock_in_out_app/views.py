@@ -717,13 +717,20 @@ def dailyupdates(request):
             last_clockout_choices.append(last_clockout_choice)
             last_clockout_choice += timedelta(minutes=30)
 
-        cur_date = datetime.now()
-        weekly_dates = []
+        if request.session.get('get_report_id'):
+            get_report_id = request.session.get('get_report_id')
+            request.session['get_report_id'] = ''
+        else:
+            get_report_id = None
+
+        print('get_report_id is:', get_report_id)
+        print('session[get_report_id]:', request.session.get('get_report_id'))
 
         context = {
             "this_user": this_user,
             "employees": User.objects.all(),
             "show_employee": show_employee,
+            "get_report_id":get_report_id,
             "today_quote": today_quote,
             "this_user_points": round(this_user.total_points, 2),
             "all_users_points": all_users_points,
@@ -759,13 +766,17 @@ def get_employee_points(request):
     else:
         return redirect('/')
 
-def get_show_date(request):
+def get_report_id(request):
     this_id = request.session.get('this_user_id')
     this_user = User.objects.get(id=this_id)
     if this_id:
-        if request.POST['get_show_date']:
-            get_show_date = datetime.strftime(request.POST['get_show_date'])
-            print("get_show_date:", get_show_date)
+        if request.POST.get('get_report_id'):
+            get_report_id = request.POST['get_report_id']
+            request.session['get_report_id'] = get_report_id
+            print("get_report_id:", request.session.get('get_report_id'))
+            return redirect('/dailyupdates')
+        else:
+            messages.error(request, 'Please Select a Date to show this employee\'s report!')
             return redirect('/dailyupdates')
     else:
         return redirect('/')
