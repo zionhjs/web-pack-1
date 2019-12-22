@@ -128,16 +128,14 @@
                 {% endfor %}
             </ul>
             {% endif %}
-            <form action="/report/get_clock_add_report" method="post">
+            <form action="/report/report_verify" method="post">
+                {% csrf_token %}
                 <select name="get_clock" id="">
                     <option value="">-- Select a Clock and do a daily report for it! --</option>
-                    {% for clock in clocks %}
+                    {% for clock in this_user.clocks.all %}
                     <option value="{{ clock.id }}">{{ clock.task_des }}</option>
                     {% endfor %}
                 </select>
-            </form>
-            <form action="/report/report_verify" method="post">
-                {% csrf_token %}
                 <div class="container-fluid">
                     <h3>Recipients Lists</h3>
                     <input class="form-control col-xs-12" type=" text" name="recipients"

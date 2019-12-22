@@ -372,21 +372,32 @@ def report(request):
     else:
         return redirect('/')
 
-def get_clock_add_report(request):
-    this_id = request.session.get('this_user_id')
-    this_user = User.objects.get(id=this_id)
-    if this_id:
-        if request.POST['get_clock']:
-            request.session['report_clock_id'] = request.POST['get_clock']
-        return redirect('/report')
-    else:
-        return redirect('/')
+# def get_clock_add_report(request):
+#     this_id = request.session.get('this_user_id')
+#     this_user = User.objects.get(id=this_id)
+#     if this_id:
+#         if request.POST['get_clock']:
+#             request.session['report_clock_id'] = request.POST['get_clock']
+#             return redirect('/report')
+#         else:
+#             messages.error(
+#                     request, 'Needs to select a clock to do the report!')
+#             return redirect('report')
+#     else:
+#         return redirect('/')
 
 
 def report_verify(request):
     this_id = request.session.get('this_user_id')
     this_user = User.objects.get(id=this_id)
     if this_id:
+        if request.POST['get_clock']:
+            request.session['report_clock_id'] = request.POST['get_clock']
+            return redirect('/report')
+        else:
+            messages.error(
+                    request, 'Needs to select a clock to do the report!')
+            return redirect('/report')
         cur_date = datetime.now()
         last_reports = DailyReport.objects.last()
         if not last_reports:
@@ -693,6 +704,9 @@ def dailyupdates(request):
         last_clock = Clock.objects.last()
         last_clockout_choice = last_clock.clockin.replace(
             tzinfo=None)  # remove the timezone
+        if request.session.get("show_employee_id"):
+            show_employee_id = request.session.get("show_employee_id")
+            show_employee = User.objects.get(id = show_employee_id)
 
         last_clockout_choice = last_clock.clockin
 
@@ -705,11 +719,14 @@ def dailyupdates(request):
             last_clockout_choices.append(last_clockout_choice)
             last_clockout_choice += timedelta(minutes=30)
 
-        
+        cur_date = datetime.now()
+        dates = []
+
 
         context = {
             "this_user": this_user,
             "employees": User.objects.all(),
+            "show_employee": show_employee,
             "today_quote": today_quote,
             "this_user_points": round(this_user.total_points, 2),
             "all_users_points": all_users_points,
@@ -723,16 +740,16 @@ def dailyupdates(request):
     else:
         return redirect('/')
 
-def get_employee_admin(request):
-    this_id = request.session.get('this_user_id')
-    this_user = User.objects.get(id=this_id)
-    if this_id:
-        employee_id = request.POST['show_employee_id']
-        this_employee = User.objects.get(id=employee_id)
-        request.session['show_employee_id'] = employee_id
-        return redirect('/dailyupdates')
-    else:
-        return redirect('/')
+# def get_employee_admin(request):
+#     this_id = request.session.get('this_user_id')
+#     this_user = User.objects.get(id=this_id)
+#     if this_id:
+#         employee_id = request.POST['show_employee_id']
+#         this_employee = User.objects.get(id=employee_id)
+#         request.session['show_employee_id'] = employee_id
+#         return redirect('/dailyupdates')
+#     else:
+#         return redirect('/')
 
 def get_employee_points(request):
     this_id = request.session.get('this_user_id')
