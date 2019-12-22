@@ -14,27 +14,90 @@
     <title>Home Page</title>
     <style>
         body {
-            padding: 0 30px;
+            padding: 30px 30px;
             background: #313e63;
+            height: 100vh;
         }
 
         .navbar {
             background: #141b33;
-            height: 75px;
-            margin: 30px 0;
+            height: 81px;
+            padding: 0 60px;
             border-radius: 9px;
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3), 0px 0px 20px rgba(0, 0, 0, 0.1) inset;
+        }
+
+        .navbar::before,
+        .navbar::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+        }
+
+        .navbar::before,
+        .navbar::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            bottom: 15px;
+            left: 10px;
+            width: 50%;
+            height: 20%;
+        }
+
+        .navbar::before,
+        .navbar::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            bottom: 15px;
+            left: 10px;
+            width: 50%;
+            height: 20%;
+            box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+            transform: rotate(-3deg);
+        }
+
+        .navbar::after {
+            right: 10px;
+            left: auto;
+            transform: rotate(3deg);
         }
 
         .navbar a {
             color: #bbc4e3;
             font-size: 21px;
         }
+
+        .row {
+            margin: 30px 0;
+            height: 87%;
+        }
+
+        .row-left {
+            background: #141b33;
+            color: #bbc4e3;
+            height: 100%;
+            border-radius: 9px;
+            padding: 15px 30px;
+        }
+
+        .row-right {
+            background: #141b33;
+            color: #bbc4e3;
+            height: 100%;
+            border-radius: 9px;
+            padding: 15px 30px;
+        }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" style="color:white;">Employee Clock In/Out System</a>
+            </div>
             <a href="/clockinout">Clock In/Out</a>
             <a href="/points">Points</a>
             <a href="/report">Daily Report</a>
@@ -43,7 +106,7 @@
         </div>
     </nav>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3.5 row-left">
             <div class="left-row">
                 <h2>{{ this_user.first_name }} {{ this_user.last_name }}</h2>
                 {% if this_user.user_level == 9 %}
@@ -128,7 +191,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-0.5 row-middle">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+        </div>
+        <div class="col-md-8 row-right">
             <h1>Clock Records</h1>
             <form action="/clockinout/get_employee" method="post">
                 {% csrf_token %}
