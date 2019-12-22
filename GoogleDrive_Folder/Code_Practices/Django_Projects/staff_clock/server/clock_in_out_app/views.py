@@ -392,7 +392,7 @@ def report_verify(request):
     this_user = User.objects.get(id=this_id)
     if this_id:
         if request.POST['get_clock']:
-            request.session['report_clock_id'] = request.POST['get_clock']
+            request.session['report_clock_id'] = int(request.POST['get_clock'])
         else:
             messages.error(
                     request, 'Needs to select a clock to do the report!')
@@ -400,23 +400,23 @@ def report_verify(request):
 
         cur_date = datetime.now()
 
-        if this_user.reports.all():
-            this_user_all_reports = this_user.reports.all()
-            for report in this_user_all_reports:
-                if report.date() == cur_date.date():
-                    messages.error(
-                    request, 'Same User Can\'t report twice in a single-day!')
-                    return redirect('/report')
+        # if this_user.user_reports:
+        #     this_user_all_reports = this_user.reports.all()
+        #     for report in this_user_all_reports:
+        #         if report.date() == cur_date.date():
+        #             messages.error(
+        #             request, 'Same User Can\'t report twice in a single-day!')
+        #             return redirect('/report')
 
         recipients = request.POST['recipients']
         done = request.POST['done']
         challenges = request.POST['challenges']
         helps = request.POST['helps']
-        user = this_user
         if request.session.get('report_clock_id'):
-            clock = Clock.objects.get(id = request.POST['get_clock'])
-            new_daily_report = DailyReport.objects.create(
-                recipients=recipients, done=done, challenges=challenges, helps=helps, user=user, clock=clock)
+            this_clock = Clock.objects.get(id = request.session.get('report_clock_id'))
+            #this_clock = Clock.objects.get(id = request.POST['get_clock'])
+            print("this_clock is:", this_clock)   #works here 
+            DailyReport.objects.create(recipients=recipients, done=done, challenges=challenges, helps=helps, user=this_user, clock=this_clock)
             print("new_daily_report:", new_daily_report)
             request.session['report_clock_id'] = None
             messages.success(request, "Daily Report Successfully!")
