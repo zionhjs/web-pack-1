@@ -94,14 +94,16 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <form action="/clockinout/get_employee" method="post">
+                                            <form action="/dailyupdates/get_show_date" method="post">
                                                 {% csrf_token %}
-                                                <select name="show_employee_id">
+                                                <select name="get_show_date">
                                                     <option value="">-- select a date to view the udpates
                                                         --</option>
-                                                    {% for employee in employees %}
-                                                    <option value="{{ employee.id }}">{{ employee.first_name }}
-                                                        {{ employee.last_name}}</option>
+                                                    {% for report in employee.user_reports.all %}
+                                                    <option value="{{ report.created_at }}">
+                                                        Report
+                                                        Date:{{ report.created_at.date }}
+                                                    </option>
                                                     {% endfor %}
                                                 </select>
                                                 <button type="submit">Submit</button>
@@ -115,12 +117,16 @@
                                                 <p>{{ employee.email }}</p>
                                             </div>
                                             <div class="col-md-8">
+                                                {% if employee.user_reports.first %}
                                                 <h2>What I did today</h2>
-                                                <p>{{ employee.user_reports }}</p>
+                                                <p>{{ employee.user_reports.first.done }}</p>
                                                 <h2>Challenges I encountered</h2>
-                                                <p>{{ employee.user_reports}}</p>
+                                                <p>{{ employee.user_reports.first.challenges }}</p>
                                                 <h2>What you can do to help me</h2>
-                                                <p>{{ employee.user_report }}</p>
+                                                <p>{{ employee.user_report.first.helps }}</p>
+                                                {% else %}
+                                                <h2>{{ employee.first_name }} has not reported yet!</h2>
+                                                {% endif %}
                                             </div>
 
                                         </div>

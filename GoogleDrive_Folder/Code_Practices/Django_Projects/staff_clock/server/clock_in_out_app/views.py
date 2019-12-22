@@ -718,8 +718,7 @@ def dailyupdates(request):
             last_clockout_choice += timedelta(minutes=30)
 
         cur_date = datetime.now()
-        dates = []
-
+        weekly_dates = []
 
         context = {
             "this_user": this_user,
@@ -757,5 +756,16 @@ def get_employee_points(request):
         this_employee = User.objects.get(id=employee_id)
         request.session['show_employee_id'] = employee_id
         return redirect('/points')
+    else:
+        return redirect('/')
+
+def get_show_date(request):
+    this_id = request.session.get('this_user_id')
+    this_user = User.objects.get(id=this_id)
+    if this_id:
+        if request.POST['get_show_date']:
+            get_show_date = datetime.strftime(request.POST['get_show_date'])
+            print("get_show_date:", get_show_date)
+            return redirect('/dailyupdates')
     else:
         return redirect('/')
