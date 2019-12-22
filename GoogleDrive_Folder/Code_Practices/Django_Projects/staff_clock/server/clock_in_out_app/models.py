@@ -71,7 +71,7 @@ class DailyReport(models.Model):
     challenges = models.CharField(max_length=255)
     helps = models.CharField(max_length=255)
     user = models.ForeignKey(User, related_name="user_reports",
-                             on_delete=models.CASCADE)  # one to many
+                             on_delete=models.CASCADE, default=None)  # one to many
     clock = models.ForeignKey(
         Clock, related_name="clock_reports", on_delete=models.CASCADE, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
