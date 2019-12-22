@@ -72,8 +72,8 @@ class DailyReport(models.Model):
     helps = models.CharField(max_length=255)
     user = models.ForeignKey(User, related_name="user_reports",
                              on_delete=models.CASCADE, default=None)  # one to many
-    clock = models.ForeignKey(
-        Clock, related_name="clock_reports", on_delete=models.CASCADE, default=None)
+    clock = models.ForeignKey(Clock, related_name="clock_reports",
+                              on_delete=models.CASCADE, default=None)  # one to many
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

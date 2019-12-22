@@ -400,13 +400,13 @@ def report_verify(request):
 
         cur_date = datetime.now()
 
-        # if this_user.user_reports:
-        #     this_user_all_reports = this_user.reports.all()
-        #     for report in this_user_all_reports:
-        #         if report.date() == cur_date.date():
-        #             messages.error(
-        #             request, 'Same User Can\'t report twice in a single-day!')
-        #             return redirect('/report')
+        if this_user.user_reports:
+            this_user_all_reports = this_user.user_reports.all()
+            for report in this_user_all_reports:
+                if report.created_at.date() == cur_date.date():
+                    messages.error(
+                    request, 'Same User Can\'t report twice in a single-day!')
+                    return redirect('/report')
 
         recipients = request.POST['recipients']
         done = request.POST['done']
@@ -414,10 +414,9 @@ def report_verify(request):
         helps = request.POST['helps']
         if request.session.get('report_clock_id'):
             this_clock = Clock.objects.get(id = request.session.get('report_clock_id'))
-            #this_clock = Clock.objects.get(id = request.POST['get_clock'])
-            print("this_clock is:", this_clock)   #works here 
-            DailyReport.objects.create(recipients=recipients, done=done, challenges=challenges, helps=helps, user=this_user, clock=this_clock)
-            print("new_daily_report:", new_daily_report)
+            print("this_clock is:", this_clock)   #worked here 
+            new_daily_report = DailyReport.objects.create(recipients=recipients, done=done, challenges=challenges, helps=helps, user=this_user, clock=this_clock)
+            print("new_daily_report:", new_daily_report)    #worked here 
             request.session['report_clock_id'] = None
             messages.success(request, "Daily Report Successfully!")
             return redirect('/report')
