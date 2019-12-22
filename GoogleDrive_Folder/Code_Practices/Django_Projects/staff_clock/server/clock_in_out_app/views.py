@@ -640,6 +640,25 @@ def award_extra_verify(request, uid, cid):
     else:
         return redirect('/')
 
+def report_award_extra_verify(request, uid, rid):
+    this_id = request.session.get('this_user_id')
+    this_user = User.objects.get(id=this_id)
+    if this_id:
+        award_user = User.objects.get(id=uid)
+        award_points = float(request.POST['point_value'])
+        award_report = DailyReport.objects.get(id=rid)
+        award_clock = award_report.clock
+        award_clock.clock_points += award_points
+        award_clock.save()
+        reasons = request.POST['reasons']
+        print(award_points)
+        new_award = Award.objects.create(
+            admin=this_user, user=award_user, clock=award_clock, points=award_points, reasons=reasons)
+        messages.success(request, f"Award {award_user.first_name} Extra {new_award.points} points successfully!")
+        return redirect('/dailyupdates')
+    else:
+        return redirect('/')
+
 
 def edit_employee_verify(request, uid):
     this_id = request.session.get('this_user_id')
@@ -716,12 +735,19 @@ def dailyupdates(request):
         while last_clockout_choice < lastclock_midnight_time:
             last_clockout_choices.append(last_clockout_choice)
             last_clockout_choice += timedelta(minutes=30)
-
+        
+        get_report = {}
         if request.session.get('get_report_id'):
             get_report_id = request.session.get('get_report_id')
-            request.session['get_report_id'] = ''
+            get_report = DailyReport.objects.get(id = get_report_id)
+            request.session['get_report_id'] = None
         else:
             get_report_id = None
+        
+        if get_report:
+            pass
+        else:
+            get_report = {}
 
         print('get_report_id is:', get_report_id)
         print('session[get_report_id]:', request.session.get('get_report_id'))
@@ -731,6 +757,7 @@ def dailyupdates(request):
             "employees": User.objects.all(),
             "show_employee": show_employee,
             "get_report_id":get_report_id,
+            "get_report":get_report,
             "today_quote": today_quote,
             "this_user_points": round(this_user.total_points, 2),
             "all_users_points": all_users_points,

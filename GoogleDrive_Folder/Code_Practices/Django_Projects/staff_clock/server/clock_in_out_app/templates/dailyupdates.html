@@ -125,26 +125,57 @@
                                                 <p>{{ employee.email }}</p>
                                             </div>
                                             <div class="col-md-8">
-                                                {% if employee.user_reports.all %}
-                                                {% for report in employee.user_reports.all %}
-                                                <!-- {% if report.user.id == employee.id and report.id == get_report_id %} -->
-                                                {% if report.id == get_report_id %}
+                                                {% if get_report and get_report.user.id == employee.id%}
                                                 <h2>What I did today</h2>
-                                                <p>{{ report.done }}</p>
+                                                <p>{{ get_report.done }}</p>
                                                 <h2>Challenges I encountered</h2>
-                                                <p>{{ report.challenges }}</p>
+                                                <p>{{ get_report.challenges }}</p>
                                                 <h2>What you can do to help me</h2>
-                                                <p>{{ report.helps }}</p>
-                                                {% else %}
-                                                <p>Nothing to display for now unless you select something!
-                                                    {{ report.id }}</p>
-                                                {% endif %}
-                                                {% endfor %}
-                                                {% else %}
+                                                <p>{{ get_report.helps }}</p>
+                                                <!-- button for modal -->
+                                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                                                    data-target="#Award_Extra_Modal_{{ get_report.id }}">
+                                                    Award {{ employee.first_name }} Extra
+                                                </button>
+                                                <!-- Modal Award-Extra-Points -->
+                                                <div class="modal fade" id="Award_Extra_Modal_{{ get_report.id }}"
+                                                    tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close"><span
+                                                                        aria-hidden="true">&times;</span></button>
+                                                            </div>
+                                                            <form
+                                                                action="/dailyupdates/award_extra_verify/{{ employee.id }}/{{ get_report.id }}"
+                                                                method="post">
+                                                                {% csrf_token %}
+                                                                <div class="modal-body">
+                                                                    <h4>{{ employee.first_name }}
+                                                                        {{ employee.last_name }}</h4>
+                                                                    <p>{{ employee.email }}</p>
+                                                                    <h3>AWARD EXTRA POINTS</h3>
+                                                                    <input type="number" name="point_value"
+                                                                        placeholder="Points Value">
+                                                                    <textarea name="reasons" cols="30" rows="10"
+                                                                        placeholder="Reason for adding points"></textarea>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" style="min-width: 100%"
+                                                                        class="btn btn-success btn-lg">ADD</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% elif not employee.user_reports.all %}
                                                 <h2>{{ employee.first_name }} has not reported yet!</h2>
+                                                {% else %}
+                                                <p>Nothing to display for now unless you select a report to display!
+                                                </p>
                                                 {% endif %}
                                             </div>
-
                                         </div>
                                         <div class="modal-footer">
                                         </div>
