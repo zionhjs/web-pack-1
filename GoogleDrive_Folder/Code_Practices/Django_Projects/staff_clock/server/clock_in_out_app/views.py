@@ -8,6 +8,7 @@ from random import choice
 from queue import Queue
 
 # Views
+from django.http import JsonResponse
 
 
 def index(request):
@@ -556,11 +557,15 @@ def admin(request):
                 clock_hours = round(total_secondes/3600, 3)
                 clock.clock_hours = clock_hours
                 clock_points = round(clock_hours*this_user.points_rate, 3)
+                if clock.clock_awards:
+                    for award in clock.clock_awards.all():
+                        clock_points += award.points
                 clock.clock_points = clock_points
                 clock.save()
                 total_points += clock_points
             else:
                 clock_points = 0
+        print("login_user total poinst:", total_points)
         this_user.total_points = total_points
         this_user.save()
 
@@ -720,6 +725,9 @@ def dailyupdates(request):
                 clock_hours = round(total_secondes/3600, 3)
                 clock.clock_hours = clock_hours
                 clock_points = round(clock_hours*this_user.points_rate, 3)
+                if clock.clock_awards:
+                    for award in clock.clock_awards.all():
+                        clock_points += award.points
                 clock.clock_points = clock_points
                 clock.save()
                 total_points += clock_points
