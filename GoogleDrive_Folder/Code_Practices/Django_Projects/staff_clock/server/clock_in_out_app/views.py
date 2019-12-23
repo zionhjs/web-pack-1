@@ -85,8 +85,8 @@ def daily_quote():
 
 def clockinout(request):  # unfinished
     this_id = request.session.get('this_user_id')
-    this_user = User.objects.get(id=this_id)
     if this_id:  # check login
+        this_user = User.objects.get(id=this_id)
         user_clocks = this_user.clocks.all()
         clock_hours = 0
         clock_points = 0
@@ -159,6 +159,8 @@ def clockinout(request):  # unfinished
         }
         return render(request, 'clockinout.html', context)
     else:
+        messages.error(
+                request, 'Needs to be logged in to visit the system!')
         return redirect('/')
 
 
@@ -244,8 +246,8 @@ def clockout(request):
 
 def points(request):
     this_id = request.session.get('this_user_id')
-    this_user = User.objects.get(id=this_id)
     if this_id:
+        this_user = User.objects.get(id=this_id)
         user_clocks = this_user.clocks.all()
         clock_hours = 0
         clock_points = 0
@@ -311,13 +313,15 @@ def points(request):
         }
         return render(request, 'points.html', context)
     else:
+        messages.error(
+                request, 'Needs to be logged in to visit the system!')
         return redirect('/')
 
 
 def report(request):
     this_id = request.session.get('this_user_id')
-    this_user = User.objects.get(id=this_id)
     if this_id:
+        this_user = User.objects.get(id=this_id)
         user_clocks = this_user.clocks.all()
         clock_hours = 0
         clock_points = 0
@@ -377,6 +381,8 @@ def report(request):
         }
         return render(request, 'report.html', context)
     else:
+        messages.error(
+                request, 'Needs to be logged in to visit the system!')
         return redirect('/')
 
 # def get_clock_add_report(request):
@@ -437,8 +443,8 @@ def report_verify(request):
 
 def settings(request):
     this_id = request.session.get('this_user_id')
-    this_user = User.objects.get(id=this_id)
     if this_id:
+        this_user = User.objects.get(id=this_id)
         user_clocks = this_user.clocks.all()
         clock_hours = 0
         clock_points = 0
@@ -498,6 +504,8 @@ def settings(request):
         }
         return render(request, 'settings.html', context)
     else:
+        messages.error(
+                request, 'Needs to be logged in to visit the system!')
         return redirect('/')
 
 

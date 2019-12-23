@@ -83,7 +83,7 @@
 
         .divide {
             height: 0px;
-            border: 0.5px solid rgba(255, 255, 255, 0.1);
+            border: 0.5px solid rgba(255, 255, 255, 0.05);
             margin: 21px 0;
         }
 
@@ -118,7 +118,16 @@
     <div class="row">
         <div class="col-md-12">
             <h1 style="margin:30px 0;text-align: center;">Welcome To Employee Management System</h1>
-            <div class="divide"></div>
+            {% if messages %}
+            <ul class="messages" style="text-align: center;">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %} style="list-style-type:none;">
+                    {{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <div class=" divide">
+            </div>
             <ul>
                 <li class="intro_li">
                     <h3>Manage Employees</h3>
@@ -129,7 +138,12 @@
                 <div class="divide"></div>
                 <li class="intro_li">
                     <h3>Daily Update</h3>
-                    <h4>Users will be able to update what's done today.</h4>
+                    <h4>Employees will be able to update what's done today.</h4>
+                </li>
+                <div class="divide"></div>
+                <li class="intro_li">
+                    <h3>Time Management</h3>
+                    <h4>User can change their Time-Zone based on their preference.</h4>
                 </li>
                 <div class="divide"></div>
                 <li class="intro_li">
@@ -137,11 +151,17 @@
                     <h4>All users can user this app to track his own daily-performance</h4>
                 </li>
                 <div class="divide"></div>
+                <li class="intro_li">
+                    <h3>Reward System</h3>
+                    <h4>Employee get reward based on their daily working-hour and the contributions they added to the
+                        company.</h4>
+                </li>
+                <div class="divide"></div>
                 <form action="/login" method="post">
                     {% csrf_token %}
                     <button class="btn btn-primary btn-lg btn-block" type="submit" value="Clockin">Login And Start
                         Tracking
-                        Your Time</button>
+                        My Time</button>
                 </form>
             </ul>
         </div>
