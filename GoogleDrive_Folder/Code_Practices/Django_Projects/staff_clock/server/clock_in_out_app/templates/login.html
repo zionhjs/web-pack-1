@@ -14,7 +14,7 @@
             padding: 30px 30px;
             /* background: #313e63; */
             background: #03d3fd;
-            height: auto;
+            height: 100vh;
         }
 
         .navbar {
@@ -67,12 +67,13 @@
             font-size: 21px;
         }
 
-        .row {
-            margin: 30px 0;
+        .container {
+            margin: 0 auto;
+            margin-top: 150px;
             background: #141b33;
             opacity: 80%;
+            width: 450px;
             color: #bbc4e3;
-            height: 100%;
             border-radius: 9px;
             padding: 15px 30px;
         }
@@ -115,7 +116,7 @@
             <a href="/login">Login</a>
         </div>
     </nav>
-    <div class="content">
+    <div class="container">
         {% if messages %}
         <ul class="messages">
             {% for message in messages %}
@@ -123,16 +124,21 @@
             {% endfor %}
         </ul>
         {% endif %}
-        <form action="/login_verify" method="post">
+        <form action="/login_verify" method="post" style="display:block;">
             {% csrf_token %}
-            <h1>Signin</h1>
-            <h3>Email Address:</h3>
-            <input type="text" name="email">
-            <h3>Password:</h3>
-            <input type="text" name="password">
-            <input type="submit" value="Sign In">
+            <h1 style="margin:9px 0">Signin</h1>
+            <div class="divide"></div>
+            <h3 style="margin:9px 0">Email Address:</h3>
+            <input type="text" class="form-control" name="email">
+            <h3 style="margin:9px 0">Password:</h3>
+            <input type="text" class="form-control" name="password">
+            <div class="divide"></div>
+            <button type="submit" class="btn btn-success btn-block" style="margin:9px 0">Signin</button>
         </form>
-        <a href="/register">Don't have an account? Register</a>
+        <form action="/register" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-link">Don't have an account? Register</button>
+        </form>
     </div>
 </body>
 
