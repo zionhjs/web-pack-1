@@ -100,17 +100,20 @@ def clockinout(request):  # unfinished
                 clock_hours = round(total_secondes/3600, 3)
                 clock.clock_hours = clock_hours
                 clock_points = round(clock_hours*this_user.points_rate, 3)
+                if clock.clock_awards:
+                    for award in clock.clock_awards.all():
+                        clock_points += award.points
                 clock.clock_points = clock_points
                 clock.save()
                 total_points += clock_points
             else:
                 clock_points = 0
+        print("login_user total poinst:", total_points)
         this_user.total_points = total_points
         this_user.save()
 
         all_users_points = float(0.01)
-        all_users = User.objects.all()
-        for user in all_users:
+        for user in User.objects.all():
             all_users_points += round(user.total_points, 2)
 
         today_quote = daily_quote()
@@ -163,10 +166,15 @@ def get_employee(request):
     this_id = request.session.get('this_user_id')
     this_user = User.objects.get(id=this_id)
     if this_id:
-        employee_id = request.POST['show_employee_id']
-        this_employee = User.objects.get(id=employee_id)
-        request.session['show_employee_id'] = employee_id
-        return redirect('/clockinout')
+        if request.POST['show_employee_id']:
+            employee_id = request.POST['show_employee_id']
+            this_employee = User.objects.get(id=employee_id)
+            request.session['show_employee_id'] = employee_id
+            messages.success(request, f"Successfully showing {this_employee.first_name}'s Clock Records!")
+            return redirect('/clockinout')
+        else:
+            messages.error(request, "please select one employee and view his/her clocks!")
+            return redirect('/clockinout')
     else:
         return redirect('/')
 
@@ -251,14 +259,10 @@ def points(request):
                 clock_hours = round(total_secondes/3600, 3)
                 clock.clock_hours = clock_hours
                 clock_points = round(clock_hours*this_user.points_rate, 3)
-                if clock.clock_awards.all():
-                    clock_allawards = 0.0
-                    awards = clock.clock_awards.all()
-                    for award in awards:
-                        print("award points:", award.points)
-                        clock_allawards += award.points
-                    print("all_extra_awards:", clock_allawards)
-                clock.clock_points = clock_points + clock_allawards
+                if clock.clock_awards:
+                    for award in clock.clock_awards.all():
+                        clock_points += award.points
+                clock.clock_points = clock_points
                 clock.save()
                 total_points += clock_points
             else:
@@ -327,6 +331,9 @@ def report(request):
                 clock_hours = round(total_secondes/3600, 3)
                 clock.clock_hours = clock_hours
                 clock_points = round(clock_hours*this_user.points_rate, 3)
+                if clock.clock_awards:
+                    for award in clock.clock_awards.all():
+                        clock_points += award.points
                 clock.clock_points = clock_points
                 clock.save()
                 total_points += clock_points
@@ -445,6 +452,9 @@ def settings(request):
                 clock_hours = round(total_secondes/3600, 3)
                 clock.clock_hours = clock_hours
                 clock_points = round(clock_hours*this_user.points_rate, 3)
+                if clock.clock_awards:
+                    for award in clock.clock_awards.all():
+                        clock_points += award.points
                 clock.clock_points = clock_points
                 clock.save()
                 total_points += clock_points
@@ -786,10 +796,15 @@ def get_employee_points(request):
     this_id = request.session.get('this_user_id')
     this_user = User.objects.get(id=this_id)
     if this_id:
-        employee_id = request.POST['show_employee_id']
-        this_employee = User.objects.get(id=employee_id)
-        request.session['show_employee_id'] = employee_id
-        return redirect('/points')
+        if request.POST['show_employee_id']:
+            employee_id = request.POST['show_employee_id']
+            this_employee = User.objects.get(id=employee_id)
+            request.session['show_employee_id'] = employee_id
+            messages.success(request, f"Successfully showing {this_employee.first_name}'s Clock Records!")
+            return redirect('/points')
+        else:
+            messages.error(request, "please select one employee and view his/her clocks!")
+            return redirect('/points')
     else:
         return redirect('/')
 
