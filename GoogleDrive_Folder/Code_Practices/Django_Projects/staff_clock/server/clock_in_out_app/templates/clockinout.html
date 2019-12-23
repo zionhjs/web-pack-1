@@ -113,7 +113,7 @@
             <div class="left-row">
                 <h2>{{ this_user.first_name }} {{ this_user.last_name }}</h2>
                 {% if this_user.user_level == 9 %}
-                <a href="/admin">Admin View</a>
+                <a href="/admin" style="color:#63c28b;">Admin View</a>
                 {% endif %}
             </div>
             <div class="left-row">
@@ -148,7 +148,8 @@
                 </form>
                 {% endif %}
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#myModal"
+                    style="padding:12px 0; color:#c46166">
                     Forgot to Clock Out LastTime?
                 </button>
                 <!-- Modal -->
