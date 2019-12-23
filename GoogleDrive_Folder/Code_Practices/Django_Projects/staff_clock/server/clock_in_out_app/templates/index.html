@@ -12,8 +12,9 @@
     <style>
         body {
             padding: 30px 30px;
-            background: #313e63;
-            height: 100vh;
+            /* background: #313e63; */
+            background: #03d3fd;
+            height: auto;
         }
 
         .navbar {
@@ -68,13 +69,16 @@
 
         .row {
             margin: 30px 0;
-            height: auto;
             background: #141b33;
             opacity: 80%;
             color: #bbc4e3;
             height: 100%;
             border-radius: 9px;
             padding: 15px 30px;
+        }
+
+        .intro_li:hover {
+            background: rgba(255, 255, 255, 0.1)
         }
 
         .divide {
@@ -108,26 +112,38 @@
             <a href="/points">Points</a>
             <a href="/report">Daily Report</a>
             <a href="/settings">Settings</a>
-            <a href="/logout">Log Out</a>
+            <a href="/login">Login</a>
         </div>
     </nav>
     <div class="row">
         <div class="col-md-12">
-            <div class="row">
-                <h1>Welcome To Employee Management System</h1>
-                <h3>Manage Employees</h3>
-                <h4>Using this application, admins will be able to add, remove, and edit employees for the
-                    application.
-                </h4>
-            </div>
-            <div class="row">
-                <h3>Daily Update</h3>
-                <h4>Users will be able to update what's done today.</h4>
-            </div>
-            <div class="row">
-                <h3>Tracking Performance</h3>
-                <h4>All users can user this app to track his own daily-performance</h4>
-            </div>
+            <h1 style="margin:30px 0;text-align: center;">Welcome To Employee Management System</h1>
+            <div class="divide"></div>
+            <ul>
+                <li class="intro_li">
+                    <h3>Manage Employees</h3>
+                    <h4>Using this application, admins will be able to add, remove, and edit employees for the
+                        application.
+                    </h4>
+                </li>
+                <div class="divide"></div>
+                <li class="intro_li">
+                    <h3>Daily Update</h3>
+                    <h4>Users will be able to update what's done today.</h4>
+                </li>
+                <div class="divide"></div>
+                <li class="intro_li">
+                    <h3>Tracking Performance</h3>
+                    <h4>All users can user this app to track his own daily-performance</h4>
+                </li>
+                <div class="divide"></div>
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-primary btn-lg btn-block" type="submit" value="Clockin">Login And Start
+                        Tracking
+                        Your Time</button>
+                </form>
+            </ul>
         </div>
     </div>
 </body>
