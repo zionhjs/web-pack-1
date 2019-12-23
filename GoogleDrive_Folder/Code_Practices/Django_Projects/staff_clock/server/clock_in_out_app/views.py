@@ -739,9 +739,6 @@ def dailyupdates(request):
         last_clock = Clock.objects.last()
         last_clockout_choice = last_clock.clockin.replace(
             tzinfo=None)  # remove the timezone
-        if request.session.get("show_employee_id"):
-            show_employee_id = request.session.get("show_employee_id")
-            show_employee = User.objects.get(id = show_employee_id)
 
         last_clockout_choice = last_clock.clockin
 
@@ -770,12 +767,28 @@ def dailyupdates(request):
         print('get_report_id is:', get_report_id)
         print('session[get_report_id]:', request.session.get('get_report_id'))
 
+        get_employee = {}
+        if request.session.get('get_employee_id'):
+            get_employee_id = request.session.get('get_employee_id')
+            get_employee = User.objects.get(id = get_employee_id)
+            request.session['get_employee_id'] = None
+        else:
+            get_employee_id = None
+        
+        if get_employee:
+            pass
+        else:
+            get_employee = {}
+
+        print('get_employee_id is:', get_employee_id)
+        print('session[get_employee_id]:', request.session.get('get_employee_id'))
+
         context = {
             "this_user": this_user,
             "employees": User.objects.all(),
-            "show_employee": show_employee,
             "get_report_id":get_report_id,
             "get_report":get_report,
+            "get_employee":get_employee,
             "today_quote": today_quote,
             "this_user_points": round(this_user.total_points, 2),
             "all_users_points": all_users_points,
@@ -813,6 +826,21 @@ def get_employee_points(request):
         else:
             messages.error(request, "please select one employee and view his/her clocks!")
             return redirect('/points')
+    else:
+        return redirect('/')
+
+def updates_get_employee_id(request):
+    this_id = request.session.get('this_user_id')
+    this_user = User.objects.get(id=this_id)
+    if this_id:
+        if request.POST.get('updates_get_employee_id'):
+            updates_get_employee_id = request.POST['updates_get_employee_id']
+            request.session['get_employee_id'] = updates_get_employee_id
+            print("get_employee_id:", request.session.get('updates_get_employee_id'))
+            return redirect('/dailyupdates')
+        else:
+            messages.error(request, 'Please Select an employee and only show his daily-updates!')
+            return redirect('/dailyupdates')
     else:
         return redirect('/')
 
