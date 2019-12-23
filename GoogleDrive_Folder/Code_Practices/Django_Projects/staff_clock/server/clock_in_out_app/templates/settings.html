@@ -101,8 +101,11 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" style="color:white;">Employee Clock In/Out System</a>
+            </div>
             <a href="/clockinout">Clock In/Out</a>
             <a href="/points">Points</a>
             <a href="/report">Daily Report</a>
@@ -205,8 +208,8 @@
         <div class="col-md-0.5 row-middle">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
         </div>
-        <div class="col-md-8">
-            <h1>Reset Password</h1>
+        <div class="col-md-8 row-right">
+            <h2 style="margin-bottom:18px;">Reset Password</h2>
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
@@ -217,16 +220,20 @@
             <form action="/settings/reset_password" method="post">
                 {% csrf_token %}
                 <div class="container-fluid">
-                    <h3>Previous Password</h3>
+                    <h3 style="margin:15px 0;">Previous Password</h3>
                     <input class="form-control col-xs-12" type=" text" name="previous_password"
                         placeholder="You Previous Password Here.">
-                    <h3>New Password</h3>
-                    <input class="form-control input-lg" type="text" name="password">
-                    <h3>Confirm Password</h3>
-                    <input class="form-control input-lg" type="text" name="password_confirm">
-                    <button class="btn-info btn-block" type="submit">Reset Password</button>
+                    <h3 style="margin:15px 0;">New Password</h3>
+                    <input class="form-control input-lg" type="text" name="password"
+                        placeholder="You New Password Here.">
+                    <h3 style="margin:15px 0;">Confirm Password</h3>
+                    <input class="form-control input-lg" type="text" name="password_confirm"
+                        placeholder="Confirm Your Password Here.">
+                    <button class="btn btn-info btn-lg btn-block" style="margin:21px 0" type="submit">Reset
+                        Password</button>
                 </div>
             </form>
+            <div class="divide"></div>
             <form action="#" method="post">
                 {% csrf_token %}
                 <div class="container-fluid">
@@ -236,7 +243,8 @@
                             -- select a timezone from the list --
                         </option>
                     </select>
-                    <button class="btn-info btn-block" type="submit">Reset Timezone</button>
+                    <button class="btn btn-warning btn-lg btn-block" style="margin:21px 0" type="submit">Reset
+                        Timezone</button>
                 </div>
             </form>
         </div>

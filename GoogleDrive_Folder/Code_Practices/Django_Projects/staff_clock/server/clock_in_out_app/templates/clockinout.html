@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-    <title>Home Page</title>
+    <title>ClockInOut Page</title>
     <style>
         body {
             padding: 30px 30px;
@@ -97,6 +97,18 @@
             border: 0.5px solid rgba(255, 255, 255, 0.1);
             margin: 21px 0;
         }
+
+        .HomeNav {
+            text-shadow: 0 0 12px #293151;
+        }
+
+        .navbar a {
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            text-shadow: 0 0 15px white;
+        }
     </style>
 
 </head>
@@ -105,7 +117,8 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#" style="color:white;">Employee Clock In/Out System</a>
+                <a class="navbar-brand HomeNav" href="#" style="color:white;">Employee
+                    Clock In/Out System</a>
             </div>
             <a href="/clockinout">Clock In/Out</a>
             <a href="/points">Points</a>

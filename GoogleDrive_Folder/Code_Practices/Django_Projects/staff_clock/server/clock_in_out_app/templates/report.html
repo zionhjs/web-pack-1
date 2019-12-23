@@ -101,8 +101,11 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" style="color:white;">Employee Clock In/Out System</a>
+            </div>
             <a href="/clockinout">Clock In/Out</a>
             <a href="/points">Points</a>
             <a href="/report">Daily Report</a>
@@ -206,7 +209,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp
         </div>
         <div class="col-md-8 row-right">
-            <h1>Compose Your Daily Update</h1>
+            <h2 style="margin-bottom:18px;">Compose Your Daily Updates</h2>
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
@@ -216,27 +219,29 @@
             {% endif %}
             <form action="/report/report_verify" method="post">
                 {% csrf_token %}
-                <select name="get_clock" id="">
-                    <option value="">-- Select a Clock and do a daily report for it! --</option>
+                <select name="get_clock" class="custom-select custom-select-sm mb-2" style="display: block;">
+                    <option value="">-- Select a Clock and do a Daily Report for it! --</option>
                     {% for clock in this_user.clocks.all %}
-                    <option value="{{ clock.id }}">{{ clock.task_des }}</option>
+                    <option value="{{ clock.id }}">{{ clock.task_des }} - {{ clock.created_at }}
+                        -{{ clock.user.first_name }}
+                    </option>
                     {% endfor %}
                 </select>
-                <div class="container-fluid">
-                    <h3>Recipients Lists</h3>
-                    <input class="form-control col-xs-12" type=" text" name="recipients"
-                        placeholder="Add recipients here.">
-                    <h3>What I Did Today</h3>
-                    <textarea class="form-control col-xs-12" name="done" cols="120" rows="6"
-                        placeholder="Type the things you did today here."></textarea>
-                    <h3>Challenges I encountered</h3>
-                    <textarea class="form-control col-xs-12" name="challenges" cols="120" rows="6"
-                        placeholder="Type the chanllenges you encountered today here."></textarea>
-                    <h3>What you can do to help</h3>
-                    <textarea class="form-control col-xs-12" name="helps" cols="120" rows="6"
-                        placeholder="Type the things you need admins to help you with here."></textarea>
-                    <button class="btn-info btn-block" type="submit">Submit Daily Report</button>
-                </div>
+                <div class="divide"></div>
+                <h3 style="margin:15px 0;">Recipients Lists</h3>
+                <input class="form-control col-xs-12" type=" text" name="recipients" placeholder="Add recipients here.">
+                <h3 style="margin:15px 0;">What I Did Today</h3>
+                <textarea class="form-control col-xs-12" name="done" cols="120" rows="6"
+                    placeholder="Type the things you did today here."></textarea>
+                <h3 style="margin:15px 0;">Challenges I encountered</h3>
+                <textarea class="form-control col-xs-12" name="challenges" cols="120" rows="6"
+                    placeholder="Type the chanllenges you encountered today here."></textarea>
+                <h3 style="margin:15px 0;">What you can do to help</h3>
+                <textarea class="form-control col-xs-12" name="helps" cols="120" rows="6"
+                    placeholder="Type the things you need admins to help you with here."></textarea>
+                <div class="divide"></div>
+                <button class="btn btn-info btn-lg btn-block" type="submit" style="margin-bottom:15px">Submit Daily
+                    Report</button>
             </form>
         </div>
     </div>
