@@ -10,7 +10,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+    <!-- chart.js cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <title>Points Page</title>
     <style>
         body {
@@ -231,7 +232,7 @@
             </form>
             <div class="divide"></div>
             <div class="container-fluid" style="height:300px; background:rgba(255, 255, 255, 0.1);">
-                <h1>This is the Graph-Container!</h1>
+                <canvas id="myChart" style="width:100%; height:100%;"></canvas>
             </div>
             <div class="divide"></div>
             <table class="table table-striped table-bordered table-hover table-dark">
@@ -267,6 +268,32 @@
             </table>
         </div>
     </div>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                datasets: [{
+                    label: 'Employee Points',
+                    backgroundColor: 'rgb(255, 99, 132,0.6)',
+                    borderColor: 'rgb(255, 99, 132, 0.6)',
+                    data: [0, 10, 5, 35, 20, 10, 35]
+                }, {
+                    label: 'Vilage Points',
+                    backgroundColor: 'rgb(132, 99, 255,0.6)',
+                    borderColor: 'rgb(132, 99, 255, 0.6)',
+                    data: [5, 50, 25, 10, 100, 150, 200]
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+    </script>
 </body>
 
 </html>

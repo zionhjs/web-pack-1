@@ -866,3 +866,4 @@ def get_report_id(request):
             return redirect('/dailyupdates')
     else:
         return redirect('/')
+
