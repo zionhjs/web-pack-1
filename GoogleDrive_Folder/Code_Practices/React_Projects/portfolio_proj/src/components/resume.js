@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Grid, Cell } from 'react-mdl';
+import Education from './education';
+import Experience from './experience';
+import Skills from './skills';
 
 class Resume extends Component {
     render() {
@@ -14,8 +17,59 @@ class Resume extends Component {
                                 style={{ height: '200px' }}
                             />
                         </div>
+                        <h2 style={{ paddingTop: '2em' }}>Zion Hung</h2>
+                        <h4 style={{ color: 'grey' }}>Programmer</h4>
+                        <hr style={{ borderTop: '3px solod #833fb2', width: '50%' }} />
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                        </p>
+                        <hr style={{ borderTop: '3px solod #833fb2', width: '50%' }} />
+                        <h5>Address</h5>
+                        <p>123 Dewey Ave, San Gabriel, CA 91776</p>
+                        <h5>Phone</h5>
+                        <p>213-822-4642</p>
+                        <h5>Email</h5>
+                        <p>zionhung@gmail.com</p>
+                        <h5>Web</h5>
+                        <p>www.zionhung.com</p>
+                        <hr style={{ borderTop: '3px solod #833fb2', width: '50%' }} />
                     </Cell>
-                    <Cell className="resume-right-col" col={8}>Right Side</Cell>
+                    <Cell className="resume-right-col" col={8}>
+                        <h2>Education</h2>
+                        <Education
+                            startYear={2012}
+                            endYear={2006}
+                            schoolName="Sci-Arc"
+                            schoolDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+                        />
+                        <Education
+                            startYear={2009}
+                            endYear={2014}
+                            schoolName="Sci-Arc"
+                            schoolDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+                        />
+                        <hr style={{ borderTop: '1px solid #e22947' }} />
+                        <Experience
+                            startYear={2012}
+                            endYear={2016}
+                            experienceName="Sci-Arc"
+                            experienceDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+                        />
+                        <Experience
+                            startYear={2012}
+                            endYear={2016}
+                            experienceName="Sci-Arc"
+                            experienceDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+                        />
+                        <hr style={{ borderTop: '1px solid #e22947' }} />
+                        <h2>Skills</h2>
+                        <Skills
+                            startYear={2012}
+                            endYear={2016}
+                            skillName="Sci-Arc"
+                            skillDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+                        />
+                    </Cell>
                 </Grid>
             </div >
         )
