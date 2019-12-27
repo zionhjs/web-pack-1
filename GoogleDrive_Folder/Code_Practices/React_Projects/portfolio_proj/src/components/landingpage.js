@@ -14,18 +14,21 @@ class LandingPage extends Component {
                             <p>HTML/CSS | Bootstrap | JavaScript | React | React Native | NodeJS | Express | MongoDB</p>
                             <div className="social-links">
                                 {/* LinkedIn */}
-                                <a href="http://google.com" target="_blank" rel="noopener noreferrer">
+                                <a href="http://linkedin.com" target="_blank" rel="noopener noreferrer">
                                     <i className="fa fa-linkedin-square" aria-hidden="true" />
                                 </a>
                                 {/* GitHub */}
-                                <a href="http://google.com" target="_blank" rel="noopener noreferrer">
-                                    <i className="fa fa-linkedin-square" aria-hidden="true" />
+                                <a href="http://github.com" target="_blank" rel="noopener noreferrer">
+                                    <i className="fa fa-github-square" aria-hidden="true" />
                                 </a>
-                                {/* GitHub */}
-                                <a href="http://google.com" target="_blank" rel="noopener noreferrer">
-                                    <i className="fa fa-linkedin-square" aria-hidden="true" />
+                                {/* Freecodecamp */}
+                                <a href="http://codecamp.com" target="_blank" rel="noopener noreferrer">
+                                    <i className="fa fa-free-code-camp" aria-hidden="true" />
                                 </a>
-
+                                {/* YouTube */}
+                                <a href="http://youtube.com" target="_blank" rel="noopener noreferrer">
+                                    <i className="fa fa-youtube-square" aria-hidden="true" />
+                                </a>
                             </div>
                         </div>
 
