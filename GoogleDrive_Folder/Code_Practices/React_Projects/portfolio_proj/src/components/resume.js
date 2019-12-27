@@ -64,10 +64,44 @@ class Resume extends Component {
                         <hr style={{ borderTop: '1px solid #e22947' }} />
                         <h2>Skills</h2>
                         <Skills
-                            startYear={2012}
-                            endYear={2016}
-                            skillName="Sci-Arc"
-                            skillDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+                            skill="JavaScript"
+                            progress={100}
+                        />
+                        <Skills
+                            skill="python"
+                            progress={100}
+                        />
+                        <Skills
+                            skill="C#"
+                            progress={100}
+                        />
+                        <Skills
+                            skill="HTML"
+                            progress={100}
+                        />
+                        <Skills
+                            skill="CSS"
+                            progress={100}
+                        />
+                        <Skills
+                            skill="Django"
+                            progress={80}
+                        />
+                        <Skills
+                            skill="React"
+                            progress={80}
+                        />
+                        <Skills
+                            skill="Angular"
+                            progress={50}
+                        />
+                        <Skills
+                            skill="Vue"
+                            progress={50}
+                        />
+                        <Skills
+                            skill="NodeJS"
+                            progress={50}
                         />
                     </Cell>
                 </Grid>
