@@ -9,7 +9,7 @@ class Contact extends Component {
                     <Cell col={6}>
                         <h2>Zion Hung</h2>
                         <img
-                            src="https://cdn2.iconfinder.com/data/icons/avatar-2/512/Fred_man-512.png"
+                            src="https://www.zivarentals.com/wp-content/uploads/2017/09/avatar-1606916_960_720-1.png"
                             alt="avatar"
                             style={{ height: '240px' }}
                         />
