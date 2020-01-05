@@ -11,7 +11,7 @@ class App extends Component {
         <div className="content-container">
           <Main></Main>
         </div >
-        <div className="nav-icon">
+        <div className="nav-icon" id="nav-line">
           <div className="nav-line" />
           <div className="nav-line" />
           <div className="nav-line" />
