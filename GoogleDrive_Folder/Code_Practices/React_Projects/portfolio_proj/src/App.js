@@ -5,6 +5,13 @@ import Main from './components/main';
 import { Link } from 'react-router-dom';
 
 class App extends Component {
+  componentDidMount() {
+    const script = document.createElement("script")
+    script.src = "/portfolio_proj/src/js/nav-toggle.js"
+    script.async = true
+    document.body.appendChild(script)
+  }
+
   render() {
     return (
       <div className="page-content">
