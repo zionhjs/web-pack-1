@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+var nav_icon = document.getElementById('nav-icon')
 
-class App extends Component {
-    render() {
-    }
+nav_icon.addEventListener('click', navClickHandler(e, nav_icon), false)
+
+function navClickHandler(e, obj) {
+    obj.children[0].classList.toggle('nav-line-actived-1');
+    obj.children[2].classList.toggle('nav-line-actived-3');
 }
-
-export default App;
