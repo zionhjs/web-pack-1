@@ -8,16 +8,31 @@ class App extends Component {
   render() {
     return (
       <div className="page-content">
-        <div className="nav-menu">
-          <Link to="/resume">Resume</Link>
-          <Link to="/about">About Me</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/contact">Contact</Link>
-        </div>
         <div className="content-container">
-          <div className="page-content" />
           <Main></Main>
         </div >
+        <div className="nav-icon">
+          <div className="nav-line" />
+          <div className="nav-line" />
+          <div className="nav-line" />
+        </div>
+        <div className="nav-menu">
+          <div className="nav-card">
+            ZH
+            </div>
+          <div className="nav-card">
+            <Link to="/resume">Resume</Link>
+          </div>
+          <div className="nav-card">
+            <Link to="/about">About Me</Link>
+          </div>
+          <div className="nav-card">
+            <Link to="/projects">Projects</Link>
+          </div>
+          <div className="nav-card">
+            <Link to="/contact">Contact</Link>
+          </div>
+        </div>
       </div>
     )
   }
