@@ -165,6 +165,8 @@
   height:36px;
   width:36px;
   /* background:red; */
+  perspective: 200px;
+  transform-style: preserve-3d;
 }
 
 .nav-icon .nav-line{
@@ -199,6 +201,12 @@
   transition: all .1s ease-out;
   transform: translate(0, 8px) rotate(45deg);
 }
+.nav-icon .nav-line-actived-1{
+  margin:8px 6px 8px 6px;
+  width:27px;
+  height: 1px;
+  opacity:0;
+}
 .nav-icon .nav-line-actived-3{
   margin:8px 6px 8px 6px;
   width:27px;
@@ -208,35 +216,96 @@
   transform: translate(0, -8px) rotate(-45deg);
 }
 
-/* enbale-toggle */
-.nav-icon:enabled .nav-line{
-  position:relative;
-  background:red;
-}
-
+/* nav-menu nav-card */
 .nav-menu{
   height:100vh;
-  background:#181818;
+  width:100vw;
+  /* background:#181818; */
   position: absolute;
   overflow: hidden;
-  /* right:0px; */
-  left:0px;
   perspective: 100px;
-  transform-style: preserve-3d;
+  transform-style: preserve-3d; 
+  transition: background-color 0.75s cubic-bezier(0.05, 0.95, 1, 1);
 }
-
 .nav-menu .nav-card{
-  width:120px;
+  width:150px;
   height:100%;
   text-align:center;
   color:white;
+  padding-top:27px;
+  cursor: pointer;
   background:#181818;
   display:inline-block;
   perspective: 100px;
   transform-style: preserve-3d;
-  box-shadow: -9px 0px 12px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: -12px 0px 15px 0px rgba(0, 0, 0, 0.75);
+  position: relative;
+  transition: left 0.75s cubic-bezier(0.15, 0.96, 0.96, 0.96), opacity 0.75s cubic-bezier(0.9, 0.05, 0.9, 0.9), width 0.75s cubic-bezier(0.3, 0.15, 0.95, 0.15);
+}
+.nav-menu .nav-card:nth-child(1){
+  left:1840px;
+}
+.nav-menu .nav-card:nth-child(2){
+  left:2140px;
+  opacity: 0.1;
+}
+.nav-menu .nav-card:nth-child(3){
+  left:2740px;
+  opacity: 0.1;
+}
+.nav-menu .nav-card:nth-child(4){
+  left:3640px;
+  opacity: 0.1;
+}
+.nav-menu .nav-card:nth-child(5){
+  left:4840px;
+  opacity: 0.1;
+}
+.nav-menu:hover{
+  background-color:#181818;
+}
+.nav-menu:hover .nav-card:nth-child(1){ 
+  left:0;
+}
+.nav-menu:hover .nav-card:nth-child(2){ 
+  left:0;
+  opacity: 1;
+}
+.nav-menu:hover .nav-card:nth-child(3){ 
+  left:0;
+  opacity: 1;
+}
+.nav-menu:hover .nav-card:nth-child(4){ 
+  left:0;
+  opacity: 1;
+}
+.nav-menu:hover .nav-card:nth-child(5){ 
+  left:0;
+  opacity: 1;
 }
 
+.nav-menu .nav-card a{
+  color:#7d7d7d;
+  font-size:15px;
+  font-weight: 300;
+  font-family: DistrictDemi W00 Regular,arial,tahoma,sans-serif;
+  text-decoration: none;
+}
+
+.nav-card:nth-child(2):hover a{
+  color:white;
+}
+.nav-card:nth-child(3):hover a{
+  color:white;
+}
+.nav-card:nth-child(4):hover a{
+  color:white;
+}
+.nav-card:nth-child(5):hover a{
+  color:white;
+}
+
+/* content container*/
 .content-container{
   position:fixed;
   width:100%;

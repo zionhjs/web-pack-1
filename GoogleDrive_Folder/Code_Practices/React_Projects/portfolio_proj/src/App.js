@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom';
 
 class App extends Component {
   componentDidMount() {
-    const script = document.createElement("script")
-    script.src = "/portfolio_proj/src/js/nav-toggle.js"
-    script.async = true
-    document.body.appendChild(script)
+    const script = document.createElement("script");
+    script.type = "text/babel";
+    script.src = "./js/nav-toggle.js";
+    script.async = true;
+    document.body.appendChild(script);
   }
 
   render() {
@@ -18,27 +19,27 @@ class App extends Component {
         <div className="content-container">
           <Main></Main>
         </div >
-        <div className="nav-icon" id="nav-line">
-          <div className="nav-line" />
-          <div className="nav-line" />
-          <div className="nav-line" />
-        </div>
         <div className="nav-menu">
           <div className="nav-card">
-            ZH
-            </div>
-          <div className="nav-card">
-            <Link to="/resume">Resume</Link>
+            <a href="/">ZION HUNG</a>
           </div>
           <div className="nav-card">
-            <Link to="/about">About Me</Link>
+            <a href="/resume">Resume</a>
           </div>
           <div className="nav-card">
-            <Link to="/projects">Projects</Link>
+            <a href="/about">About Me</a>
           </div>
           <div className="nav-card">
-            <Link to="/contact">Contact</Link>
+            <a href="/projects">Projects</a>
           </div>
+          <div className="nav-card">
+            <a href="/contact">Contact</a>
+          </div>
+        </div>
+        <div className="nav-icon" id="nav-icon">
+          <div className="nav-line" />
+          <div className="nav-line" />
+          <div className="nav-line" />
         </div>
       </div>
     )
