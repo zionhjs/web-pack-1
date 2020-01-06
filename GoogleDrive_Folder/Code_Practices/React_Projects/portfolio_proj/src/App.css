@@ -261,7 +261,7 @@
   left:4840px;
   opacity: 0.1;
 }
-.nav-menu:hover{
+.bg{
   background-color:#181818;
 }
 .card-child-1{ 
@@ -295,24 +295,24 @@
   text-decoration: none;
 }
 
-.nav-card:nth-child(2):hover a{
+.card-child-2:hover a{
   color:white;
 }
 /* .nav-card:nth-child(2):hover +.nav-card:nth-child(1){
   width:0;
 } */
-.nav-card:nth-child(2):hover{
+.card-child-2:hover{
   opacity: 0.1;
   width:85vw;
 }
 
-.nav-card:nth-child(3):hover a{
+.card-child-3:hover a{
   color:white;
 }
-.nav-card:nth-child(4):hover a{
+.card-child-4:hover a{
   color:white;
 }
-.nav-card:nth-child(5):hover a{
+.card-child-5:hover a{
   color:white;
 }
 

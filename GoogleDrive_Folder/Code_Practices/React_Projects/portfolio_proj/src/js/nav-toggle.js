@@ -20,5 +20,8 @@ function navClickHandler(e, obj) {
     card[2].classList.toggle('card-child-3');
     card[3].classList.toggle('card-child-4');
     card[4].classList.toggle('card-child-5');
+
+    var nav_menu = document.getElementsByClassName('nav-menu');
+    nav_menu[0].classList.toggle('bg');
 }
 
