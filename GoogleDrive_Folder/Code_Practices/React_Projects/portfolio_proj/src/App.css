@@ -167,6 +167,7 @@
   /* background:red; */
   perspective: 200px;
   transform-style: preserve-3d;
+  cursor: pointer;
 }
 
 .nav-icon .nav-line{
@@ -190,18 +191,15 @@
   margin-left:0;
   width:27px;
 }
-
-
 /* nav-line-clicked */
 .nav-icon .nav-line-actived-1{
   margin:8px 6px 8px 6px;
   width:27px;
   height: 1px;
   background: red;
-  transition: all .1s ease-out;
   transform: translate(0, 8px) rotate(45deg);
 }
-.nav-icon .nav-line-actived-1{
+.nav-icon .nav-line-actived-2{
   margin:8px 6px 8px 6px;
   width:27px;
   height: 1px;
@@ -212,7 +210,6 @@
   width:27px;
   height: 1px;
   background: red;
-  transition: all .1s ease-out;
   transform: translate(0, -8px) rotate(-45deg);
 }
 
@@ -240,10 +237,13 @@
   transform-style: preserve-3d;
   box-shadow: -12px 0px 15px 0px rgba(0, 0, 0, 0.75);
   position: relative;
-  transition: left 0.75s cubic-bezier(0.15, 0.96, 0.96, 0.96), opacity 0.75s cubic-bezier(0.9, 0.05, 0.9, 0.9), width 0.75s cubic-bezier(0.3, 0.15, 0.95, 0.15);
+  transition: left 0.75s cubic-bezier(0.15, 0.96, 0.96, 0.96), opacity 0.75s cubic-bezier(0.9, 0.05, 0.9, 0.9), width 0.2s cubic-bezier(0.3, 0.15, 0.95, 0.15);
 }
 .nav-menu .nav-card:nth-child(1){
   left:1840px;
+}
+.nav-menu .nav-card:nth-child(1) a{
+  opacity: 0;
 }
 .nav-menu .nav-card:nth-child(2){
   left:2140px;
@@ -264,22 +264,25 @@
 .nav-menu:hover{
   background-color:#181818;
 }
-.nav-menu:hover .nav-card:nth-child(1){ 
+.card-child-1{ 
   left:0;
 }
-.nav-menu:hover .nav-card:nth-child(2){ 
+.card-child-1 a{
+  opacity: 1;
+}
+.card-child-2{ 
   left:0;
   opacity: 1;
 }
-.nav-menu:hover .nav-card:nth-child(3){ 
+.card-child-3{ 
   left:0;
   opacity: 1;
 }
-.nav-menu:hover .nav-card:nth-child(4){ 
+.card-child-4{ 
   left:0;
   opacity: 1;
 }
-.nav-menu:hover .nav-card:nth-child(5){ 
+.card-child-5{ 
   left:0;
   opacity: 1;
 }
@@ -295,6 +298,14 @@
 .nav-card:nth-child(2):hover a{
   color:white;
 }
+/* .nav-card:nth-child(2):hover +.nav-card:nth-child(1){
+  width:0;
+} */
+.nav-card:nth-child(2):hover{
+  opacity: 0.1;
+  width:85vw;
+}
+
 .nav-card:nth-child(3):hover a{
   color:white;
 }
