@@ -11,7 +11,7 @@ class LandingPage extends Component {
                         <div className="banner-text">
                             <h1>Full Stack Web Developer</h1>
                             <hr />
-                            <p>HTML/CSS | Bootstrap | JavaScript | React | React Native | NodeJS | Express | MongoDB</p>
+                            <p>HTML/CSS | Bootstrap | JavaScript | React(MERN) | React Native | NodeJS | Express | MongoDB | C# | Angular(MEAN) | Python(Django)</p>
                             <div className="social-links">
                                 {/* LinkedIn */}
                                 <a href="http://linkedin.com" target="_blank" rel="noopener noreferrer">
