@@ -50,6 +50,7 @@ class App extends Component {
     var card_a_5 = document.getElementById("card-a-5");
     var card_a_6 = document.getElementById("card-a-6");
     card_a_1.classList.toggle("card-a");
+    card_a_1.classList.toggle("card-a-active");
     card_a_2.classList.toggle("card-a");
     card_a_3.classList.toggle("card-a");
     card_a_4.classList.toggle("card-a");

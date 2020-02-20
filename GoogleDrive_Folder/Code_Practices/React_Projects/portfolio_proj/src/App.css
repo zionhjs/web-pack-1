@@ -43,11 +43,17 @@
   left:0;
   width:100%;
   /* height:100%; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .avatar-img{
   height:250px;
-  padding-top:5em;
+  border-radius:50%;
+  overflow:hidden;
+  /* padding-top:5em; */
   margin:0 auto;
 }
 
@@ -60,7 +66,7 @@
   width: 75%;
   margin:auto;
   margin-top:90px;
-  border-radius:10px;
+  border-radius:9px;
 }
 .banner-text h1{
   font-size:66px;
@@ -165,9 +171,9 @@
   right:21px;
   height:36px;
   width:36px;
-  /* background:red; */
-  perspective: 200px;
   transform-style: preserve-3d;
+  perspective: 600px;
+  z-index:666;
   cursor: pointer;
   margin:auto;
 }
@@ -219,16 +225,19 @@
   height:100vh;
   width:100vw;
   /* background:#181818; */
+  pointer-events: none;
   position: absolute;
   overflow: hidden;
   transform-style: preserve-3d; 
-  perspective: 100px;
+  perspective: 99px;
+  z-index:99;
   display:flex;
   transition: background-color 0.75s cubic-bezier(0.05, 0.95, 1, 1);
 }
 
 .nav-menu-open{
   background:#181818;
+  pointer-events: auto;
 }
 
 .nav-menu .nav-card{
@@ -249,11 +258,8 @@
 
 .nav-menu .nav-card-1{
   color:white;
-  left:1840px;
-  /* left:100vw-150px; */
-}
-.nav-menu .nav-card-1 a{
-  opacity: 0;
+  /* left:1840px; */
+  left:95vw;
 }
 .nav-menu .nav-card-2{
   left:2140px;
@@ -328,13 +334,17 @@
 }
 #card-a-1{
   font-size:15px;
-  opacity: 0.6;
+  opacity: 0;
   margin:0 auto;
   text-decoration: none;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   /* text-orientation: upright; */
 }
+#nav-card-1 .card-a-active{
+  opacity: 0.6;
+}
+
 .card-child-2:hover a{
   color:white;
 }
@@ -351,13 +361,106 @@
   color:white;
 }
 
-
 /* content container*/
 .content-container{
   position:fixed;
   width:100%;
-  height:100vh;
+  height:100%;
   perspective: 0px;
   transform-style: preserve-3d;
   background:#181818;
+}
+.landing-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* projects */
+.projects-grid{
+  height:90%;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content:center;
+}
+.category-tabs .mdl-tabs__tab-bar{
+  height:60px;
+  /* display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:flex-end; */
+}
+.category-tabs .mdl-tabs__tab{
+  font-size:15px;
+  color:#7d7d7d;
+  height:60px;
+  line-height: 60px;
+  /* color:red !important; */
+}
+.category-tabs .mdl-tabs__tab:hover{
+  color:white !important;
+}
+.category-tabs .is-active{
+  color:white !important;
+  font-weight: 400;
+  background:#2c3e50 !important;
+}
+.category-tabs #tabs{
+  height:60px;
+}
+
+/* project-card */
+.mdl-card{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.mdl-card:hover{
+  width:432px;
+  height:612px;
+  transition: box-shadow 0.9s cubic-bezier(0.05, 0.95, 1, 1), width 0.6s ease-in-out, height 0.6s ease-in-out;
+  box-shadow: -9px 6px rgba(44, 62, 82, 0.5),
+              -15px 12px rgba(44, 62, 82, 0.4),
+              -21px 18px rgba(44, 62, 82, 0.3),
+              -27px 24px rgba(44, 62, 82, 0.2),
+              -33px 29px rgba(44, 62, 82, 0.1);
+}
+
+/* contact-page */
+.contact-body{
+  padding: 0;
+  height:100% !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.contact-grid{
+  width:1400px;
+  height:666px !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: -webkit-linear-gradient(to right, #FFFDE4, #005AA7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius:9px;
+}
+.mdl-cell--6-col hr{
+  margin:0;
+}
+.mdl-cell--6-col .divider{
+  display:inline-block;
+  width:30px;
+  height:100%;
+  background-color:red;
+}
+.mdl-cell--6-col{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -7,13 +7,13 @@ class Contact extends Component {
             <div className="contact-body">
                 <Grid className="contact-grid">
                     <Cell col={6}>
-                        <h2>Zion Hung</h2>
                         <img
                             src="https://www.zivarentals.com/wp-content/uploads/2017/09/avatar-1606916_960_720-1.png"
                             alt="avatar"
-                            style={{ height: '240px' }}
+                            style={{ height: '240px' }} className="avatar-img"
                         />
-                        <p style={{ width: '60%', margin: 'auto', paddingTop: '1em' }}>
+                        <h2>Zion Hung</h2>
+                        <p style={{ width: '60%', paddingTop: '1em' }}>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
                         </p>
                     </Cell>
