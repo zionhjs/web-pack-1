@@ -464,3 +464,26 @@
   justify-content: center;
   align-items: center;
 }
+.contact-grid{
+  /* display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; */
+}
+.contact-dialog-container{
+  width:450px !important;
+  padding:0 !important;
+}
+.mdl-textfield__input{
+  background:#E4E5E6 !important;
+}
+.contact-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-textfield-area input{
+  height:120px;
+}
