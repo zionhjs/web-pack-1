@@ -34,14 +34,18 @@ import 'react-mdl/extra/material.js';
 //         let transporter = nodemailer.createTransport({
 //             host: 'smtp.ethereal.email',
 //             port: 587,
+//             secure:false,
 //             auth: {
 //                 user: 'malachi41@ethereal.email',
 //                 pass: 'ZHczgkNjmy5tWTEwJt'
+//             },
+//             {
+//                 false
 //             }
 //         })
 
 //         let mailOptions = {
-//             from: 'test@testaccount.com',
+//             from: '"Website Guest" <test@testaccount.com>',
 //             to: 'malachi41@ethereal.email',
 //             replyTo: 'test@testaccount.com',
 //             subject: 'New Message',

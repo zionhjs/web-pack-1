@@ -26,6 +26,9 @@ app.post('/api/form', (req, res) => {
             auth: {
                 user: 'malachi41@ethereal.email',
                 pass: 'ZHczgkNjmy5tWTEwJt'
+            },
+            tls: {
+                rejectUnauthorized: false
             }
         })
 
