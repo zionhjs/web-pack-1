@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import { Grid, Cell, List, ListItem, ListItemContent, Dialog, DialogTitle, DialogContent, DialogActions, Button, ProgressBar, Textfield } from 'react-mdl';
+import axios from 'axios';
 
 class Contact extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            name: '',
+            number: '',
+            email: '',
+            message: ''
+        };
         this.handleOpenDialog = this.handleOpenDialog.bind(this);
         this.handleCloseDialog = this.handleCloseDialog.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleOpenDialog() {
@@ -19,6 +27,22 @@ class Contact extends Component {
         this.setState({
             openDialog: false
         });
+    }
+
+    handleChange = e => {
+        this.setState({ [e.target.id]: e.target.value })
+    }
+    async handleSubmit(e) {
+        e.preventDefault()
+
+        const { name, number, email, message } = this.state
+
+        const form = await axios.post('/api/form', {
+            name,
+            number,
+            email,
+            message
+        })
     }
 
     render() {
@@ -82,36 +106,14 @@ class Contact extends Component {
                                 <DialogContent className="dialog-content-container">
                                     <p>Provide your basic infomation here and I'll contact you back soon!.</p>
                                     <ProgressBar indeterminate />
-                                    <form className="contact-form" id="contact-form" action="mailto:hjszion@gmail.com" method="post"
+                                    <form className="contact-form" id="contact-form" method="post"
                                         enctype="text/plain">
-                                        <Textfield className="form-textfield"
-                                            onChange={() => { }}
-                                            floatingLabel
-                                            label="Your name here..."
-                                            style={{ width: '100%' }}
-                                        />
-                                        <Textfield className="form-textfield"
-                                            onChange={() => { }}
-                                            floatingLabel
-                                            label="Your contact number..."
-                                            style={{ width: '100%' }}
-                                        />
-                                        <Textfield className="form-textfield"
-                                            onChange={() => { }}
-                                            floatingLabel
-                                            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
-                                            error="Input is not a correct email!"
-                                            label="Your email here..."
-                                            style={{ width: '100%' }}
-                                        />
-                                        <Textfield className="form-textfield form-textfield-area"
-
-                                            onChange={() => { }}
-                                            floatingLabel
-                                            label="Your messages here in detail..."
-                                            style={{ width: '100%' }}
-                                        />
-                                        <Button type='submit' form="contact-form" style={{ fontSize: 18, fontWeight: 450, textAlign: "center", width: "100%" }}>Send</Button>
+                                        <input name="name" placeholder="Your name here..." style={{ width: '100%' }} onChange={this.handleChange} />
+                                        <input name="number" placeholder="Your contact number..." style={{ width: '100%' }} onChange={this.handleChange} />
+                                        <input name="email" placeholder="Your contact number..." style={{ width: '100%' }} onChange={this.handleChange} />
+                                        <textarea name="message" placeholder="Your messages here in detail..." style={{ width: '100%' }} onChange={this.handleChange} />
+                                        <Button type='submit' form="contact-form" style={{ fontSize: 18, fontWeight: 450, textAlign: "center", width: "100%" }}
+                                            onChange={this.handleSubmit}>Send</Button>
                                     </form>
                                 </DialogContent>
                             </Dialog>
