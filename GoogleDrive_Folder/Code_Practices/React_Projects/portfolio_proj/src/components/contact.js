@@ -5,16 +5,33 @@ import axios from 'axios';
 class Contact extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            name: '',
-            number: '',
-            email: '',
-            message: ''
+            status: ""
         };
+        this.submitForm = this.submitForm.bind(this);
+
         this.handleOpenDialog = this.handleOpenDialog.bind(this);
         this.handleCloseDialog = this.handleCloseDialog.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    submitForm(ev) {
+        ev.preventDefault();
+        const form = ev.target;
+        const data = new FormData(form);
+        const xhr = new XMLHttpRequest();
+        xhr.open(form.method, form.action);
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState !== XMLHttpRequest.DONE) return;
+            if (xhr.status === 200) {
+                form.reset();
+                this.setState({ status: "SUCCESS" });
+            } else {
+                this.setState({ status: "ERROR" });
+            }
+        };
+        xhr.send(data);
     }
 
     handleOpenDialog() {
@@ -27,22 +44,6 @@ class Contact extends Component {
         this.setState({
             openDialog: false
         });
-    }
-
-    handleChange = e => {
-        this.setState({ [e.target.id]: e.target.value })
-    }
-    async handleSubmit(e) {
-        e.preventDefault()
-
-        const { name, number, email, message } = this.state
-
-        const form = await axios.post('/api/form', {
-            name,
-            number,
-            email,
-            message
-        })
     }
 
     render() {
@@ -83,14 +84,14 @@ class Contact extends Component {
                                     <ListItemContent style={{ fontSize: '25px', fontFamily: 'Anton' }}>
                                         <i className="fa fa-whatsapp" aria-hidden="true"
                                             style={{ fontSize: '30px' }} />
-                                        MySkypeID
+                                        zionhung 2138224642
                                     </ListItemContent>
                                 </ListItem>
                                 <ListItem>
                                     <ListItemContent style={{ fontSize: '25px', fontFamily: 'Anton' }}>
                                         <i className="fa fa-map-marker" aria-hidden="true"
                                             style={{ fontSize: '30px' }} />
-                                        My-location:&nbsp; Los Angeles CA
+                                        Los Angeles CA   &nbsp; Irvine CA
                                     </ListItemContent>
                                 </ListItem>
                             </List>
@@ -106,14 +107,39 @@ class Contact extends Component {
                                 <DialogContent className="dialog-content-container">
                                     <p>Provide your basic infomation here and I'll contact you back soon!.</p>
                                     <ProgressBar indeterminate />
-                                    <form className="contact-form" id="contact-form" method="post"
-                                        enctype="text/plain">
-                                        <input name="name" placeholder="Your name here..." style={{ width: '100%' }} onChange={this.handleChange} />
-                                        <input name="number" placeholder="Your contact number..." style={{ width: '100%' }} onChange={this.handleChange} />
-                                        <input name="email" placeholder="Your contact number..." style={{ width: '100%' }} onChange={this.handleChange} />
-                                        <textarea name="message" placeholder="Your messages here in detail..." style={{ width: '100%' }} onChange={this.handleChange} />
-                                        <Button type='submit' form="contact-form" style={{ fontSize: 18, fontWeight: 450, textAlign: "center", width: "100%" }}
-                                            onChange={this.handleSubmit}>Send</Button>
+                                    <form className="contact-form" action="https://formspree.io/mrgkgnpv" id="contact-form" method="post" target="_blank">
+                                        <Textfield className="form-textfield"
+                                            onChange={() => { }}
+                                            floatingLabel
+                                            name="name"
+                                            label="Your name here..."
+                                            style={{ width: '100%' }}
+                                        />
+                                        <Textfield className="form-textfield"
+                                            onChange={() => { }}
+                                            floatingLabel
+                                            name="number"
+                                            type="number"
+                                            label="Your contact number..."
+                                            style={{ width: '100%' }}
+                                        />
+                                        <Textfield className="form-textfield"
+                                            onChange={() => { }}
+                                            floatingLabel
+                                            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                                            error="Input is not a correct email!"
+                                            name="email"
+                                            label="Your email here..."
+                                            style={{ width: '100%' }}
+                                        />
+                                        <Textfield className="form-textfield form-textfield-area"
+                                            onChange={() => { }}
+                                            floatingLabel
+                                            name="message"
+                                            label="Your messages here in detail..."
+                                            style={{ width: '100%' }}
+                                        />
+                                        <Button type='submit' form="contact-form" style={{ fontSize: 18, fontWeight: 450, textAlign: "center", width: "100%" }}>Send</Button>
                                     </form>
                                 </DialogContent>
                             </Dialog>

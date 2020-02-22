@@ -8,11 +8,6 @@ import PropTypes from 'prop-types';
 
 class App extends Component {
   componentDidMount() {
-    // const script = document.createElement("script");
-    // script.type = "text/babel";
-    // script.src = "./js/nav-toggle.js";
-    // script.async = true;
-    // document.body.appendChild(script);
   }
 
   navClickHandler = () => {
@@ -72,7 +67,7 @@ class App extends Component {
   cardClickHandler_3 = () => {
     var card_3 = document.getElementById('nav-card-3');
     card_3.classList.toggle("nav-card-active");
-    setTimeout(() => { window.location.href = "/aboutme"; }, 170)
+    setTimeout(() => { window.location.href = "/aboutme"; }, 150)
   }
   cardClickHandler_4 = () => {
     var card_4 = document.getElementById('nav-card-4');

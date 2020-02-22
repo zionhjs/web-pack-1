@@ -11,6 +11,7 @@ class Experience extends Component {
                 <Cell col={8}>
                     <h4 style={{ marginTop: '0px' }}>{this.props.experienceName}</h4>
                     <p>{this.props.experienceDescription}</p>
+                    <a href={this.props.link} target="_blank" style={{ color: "#00d2ff" }}>{this.props.link}</a>
                 </Cell>
             </Grid>
         )

@@ -9,7 +9,7 @@ class LandingPage extends Component {
                     <Cell col={12}>
                         <img src="https://www.zivarentals.com/wp-content/uploads/2017/09/avatar-1606916_960_720-1.png" alt="avatar" className="avatar-img"></img>
                         <div className="banner-text">
-                            <h1>Full Stack Web Developer</h1>
+                            <h1>Full Stack Developer</h1>
                             <hr />
                             <p>HTML/CSS | Bootstrap | JavaScript | React(MERN) | NodeJS | Express | MongoDB | C# & ASP | Angular(MEAN) | Python(Django)</p>
                             <div className="social-links">
