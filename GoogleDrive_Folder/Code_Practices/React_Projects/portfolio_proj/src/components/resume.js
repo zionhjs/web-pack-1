@@ -10,8 +10,13 @@ class Resume extends Component {
         var arrow = document.getElementById("arrow-icon");
         arrow.classList.toggle("open");
         e.preventDefault();
-        var right_col = document.getElementById("resume-right-col")
-
+        var right_col = document.getElementById("resume-right-col");
+        if (arrow.classList.contains("open")) {
+            right_col.scrollTo({ left: 0, top: 2000, behavior: 'smooth' });
+        }
+        else {
+            right_col.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
+        }
     }
 
     render() {
@@ -29,11 +34,12 @@ class Resume extends Component {
                             <h2 style={{ paddingTop: '0.6em', color: 'white' }}>Zion Hung</h2>
                         </div>
                         <h4 style={{ color: 'white' }}>SDE Programmer</h4>
-                        <hr style={{ borderTop: '3px solod #833fb2', width: '100%' }} />
+                        <hr style={{ borderTop: '1px solid #bdc3c7', width: '100%' }} />
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                            I was trained as a Designer from the Toptier school of the world. I'm good at mathematics and logic, after few years career of Design, I shift my pivot to the Coding world. I love creating things and learning new stuffs.
+                            In the SDE field, my skill covers Backend to Frontend and with product design. Making products is exciting for me, always fun to apply my skills and making things.
                         </p>
-                        <hr style={{ borderTop: '3px solod #833fb2', width: '100%' }} />
+                        <hr style={{ borderTop: '1px solid #bdc3c7', width: '100%' }} />
                         <h5 style={{ color: 'white' }}>Address</h5>
                         <p>Address_1: 124 W 4th St #F, Downtown Los Angeles, CA 90013</p>
                         <p>Address_2: 3335 Susan St #200, Costa Mesa, CA 92626</p>
@@ -46,20 +52,29 @@ class Resume extends Component {
                         <p>www.zionhung.com</p>
                         <hr style={{ borderTop: '3px solod #833fb2', width: '100%' }} />
                     </Cell>
-                    <Cell className="resume-right-col" id="resume-right-col" col={8}>
+                    <Cell className="resume-right-col" id="resume-right-col" col={8}
+                    >
                         <a class="arrow-icon" id="arrow-icon" onClick={this.arrowClickHandler}>
                             <span class="left-bar"></span>
                             <span class="right-bar"></span>
                         </a>
                         <h2>Skills</h2>
                         <hr style={{ borderTop: '1.5px solid white', width: "97%" }} />
-                        <h5>Language</h5>
+                        <h5>Languages</h5>
                         <Skills
-                            skill="python"
+                            skill="HTML5"
+                            progress={96}
+                        />
+                        <Skills
+                            skill="CSS3 & Sass"
+                            progress={87}
+                        />
+                        <Skills
+                            skill="Python"
                             progress={90}
                         />
                         <Skills
-                            skill="JavaScript & ES6"
+                            skill="JavaScript ES6 & NodeJS"
                             progress={87}
                         />
                         <Skills
@@ -70,14 +85,10 @@ class Resume extends Component {
                             skill="Java"
                             progress={30}
                         />
-                        <hr style={{ borderTop: '1px dashed #bdc3c7', width: "88%", left: 0 }} />
-                        <h5>MVC FrameWork</h5>
+                        <hr style={{ borderTop: '1px dashed #bdc3c7', width: "89%", left: 0 }} />
+                        <h5>Web Frameworks</h5>
                         <Skills
                             skill="React"
-                            progress={80}
-                        />
-                        <Skills
-                            skill="Django"
                             progress={80}
                         />
                         <Skills
@@ -85,43 +96,47 @@ class Resume extends Component {
                             progress={60}
                         />
                         <Skills
-                            skill="ASP.NET"
-                            progress={75}
-                        />
-                        <Skills
                             skill="Vue"
                             progress={30}
                         />
-                        <hr style={{ borderTop: '1px dashed #bdc3c7', width: "88%", left: 0 }} />
+                        <Skills
+                            skill="ASP.NET Core"
+                            progress={75}
+                        />
+                        <Skills
+                            skill="Django"
+                            progress={80}
+                        />
+                        <Skills
+                            skill="Flask"
+                            progress={30}
+                        />
+                        <Skills
+                            skill="Express"
+                            progress={30}
+                        />
+                        <hr style={{ borderTop: '1px dashed #bdc3c7', width: "89%", left: 0 }} />
                         <h5>Database</h5>
                         <Skills
                             skill="MongoDB"
                             progress={60}
                         />
                         <Skills
-                            skill="mySQL"
+                            skill="SQLite"
                             progress={60}
                         />
-                        <hr style={{ borderTop: '1px dashed #bdc3c7', width: "88%", left: 0 }} />
-                        <h5>Web Fundamental</h5>
+                        <hr style={{ borderTop: '1px dashed #bdc3c7', width: "89%", left: 0 }} />
+                        <h5>Package Managers</h5>
                         <Skills
-                            skill="HTML"
-                            progress={96}
+                            skill="NPM"
+                            progress={55}
                         />
                         <Skills
-                            skill="CSS & CSS3"
-                            progress={87}
+                            skill="NuGet"
+                            progress={35}
                         />
-                        <hr style={{ borderTop: '1px dashed #bdc3c7', width: "88%", left: 0 }} />
+                        <hr style={{ borderTop: '1px dashed #bdc3c7', width: "89%", left: 0 }} />
                         <h5>Other</h5>
-                        <Skills
-                            skill="NodeJS"
-                            progress={50}
-                        />
-                        <Skills
-                            skill="Flask"
-                            progress={30}
-                        />
                         <Skills
                             skill="WebPack"
                             progress={45}
@@ -135,8 +150,8 @@ class Resume extends Component {
                             progress={50}
                         />
 
-                        <hr style={{ borderTop: '1.5px solid white', width: "97%" }} />
                         <h2>Work Experiences</h2>
+                        <hr style={{ borderTop: '1.5px solid white', width: "97%" }} />
                         <Experience
                             startYear={2018}
                             endYear={2019}
@@ -151,8 +166,8 @@ class Resume extends Component {
                             experienceDescription="Urbanus Architecture is one of China's Toptier Architecture Firm, I worked there for nearly 2 years as an architect before I came to USA to futher my education in Design."
                             link="http://www.urbanus.com.cn/"
                         />
-                        <hr style={{ borderTop: '1.5px solid white', width: "97%" }} />
                         <h2>Education</h2>
+                        <hr style={{ borderTop: '1.5px solid white', width: "97%" }} />
                         <Education
                             startYear={2019}
                             endYear={2020}

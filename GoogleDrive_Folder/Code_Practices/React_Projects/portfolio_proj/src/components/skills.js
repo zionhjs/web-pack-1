@@ -8,7 +8,7 @@ class Skills extends Component {
             <Grid>
                 <Cell col={12}>
                     <div style={{ display: 'flex' }}>
-                        <div style={{ display: 'inline', width: '10%' }}>
+                        <div style={{ display: 'inline', width: '24%' }}>
                             {this.props.skill}
                         </div>
                         <div style={{ display: 'inline', width: '90%' }}>

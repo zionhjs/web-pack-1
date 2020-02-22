@@ -68,6 +68,7 @@
   background: linear-gradient(to right, #EC6EAD, #3494E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   opacity:0.9;
   width: 75%;
+  padding:45px 0;
   margin:auto;
   margin-top:90px;
   border-radius:9px;
@@ -504,7 +505,7 @@
   align-items: center; */
 }
 .resume-right-col{
-  background: -webkit-linear-gradient(to bottom, #556270, #00416A);  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to bottom, #00416A, #BE5869);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom,#00416A, #BE5869); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color:white;
   padding:2em;
@@ -523,7 +524,7 @@
   padding: 0.5em;
   margin: 1em auto;
   position: fixed;
-  left:1200px;
+  left:63%;
   cursor: pointer;
   border-radius: 4px;
   z-index:99;
@@ -591,34 +592,3 @@
 }
 
 
-/* #arrow-container{
-  position:fixed;
-  right:650px;
-  bottom:90px;
-}
-#arrow-down {
-  position:relative;
-  margin: 0 auto;
-  text-align: center;
-  animation: jump 3.6s infinite;
-}
-#arrow-down i{
-  content: '\f0a8';
-  font-family: 'FontAwesome';
-  font-size: 80px;
-  transition: .3s ease-in-out;
-  color:white;
-  background:inherit;
-  overflow: hidden;
-  opacity:0.5;
-}
-
-#arrow-down i:hover{
-  content: '\f0a8';
-  font-family: 'FontAwesome';
-  font-size: 80px;
-  transition: .3s ease-in-out;
-}
-@keyframes jump {
-  0% { top: 0; } 50% { top: 50px; } 100% { top: 0; }
-} */

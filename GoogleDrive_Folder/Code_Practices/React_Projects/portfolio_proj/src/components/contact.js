@@ -58,7 +58,8 @@ class Contact extends Component {
                         />
                         <h2>Zion Hung</h2>
                         <p style={{ width: '60%', paddingTop: '1em', fontSize: '15px' }}>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            I was trained as a Designer from the Toptier school of the world. I'm good at mathematics and logic, after few years career of Design, I shift my pivot to the Coding world. I love creating things and learning new stuffs.
+                                In the SDE field, my skill covers Backend to Frontend and with product design. Making products is exciting for me, always fun to apply my skills and making things.
                         </p>
                     </Cell>
                     <Cell col={6}>
