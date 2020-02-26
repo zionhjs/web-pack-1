@@ -14,60 +14,58 @@ class Projects extends Component {
                 <div className="projects-grid">
                     {/* Project 01 */}
                     <Card shadow={5} style={{ minWidth: '360', minHeight: '510', margin: 'auto' }}>
-                        <CardTitle id="card-title" style={{ color: "#fff", height: '360px', background: 'url(https://i0.wp.com/instinct.is/wp-content/uploads/2017/08/woman-cart-grocery-iphone-2.jpg?resize=2000%2C900&ssl=1) center/cover' }}
-                        >Clark.io Website</CardTitle>
-                        <CardText>
-                            Public informational website for Field Test, <a href="http://field-test.co" target="_blank">http://field-test.co</a> a subsidiary of The Lion'Esque Group.
-                    </CardText>
+                        <CardTitle id="card-title" style={{ color: "black", height: '360px', background: 'url(https://i.loli.net/2020/02/26/3yf96TPi8Ntuh2M.png) center/cover' }}
+                        >Enchanted Diamonds</CardTitle>
+                        <CardText style={{ height: '90' }}>
+                            Enchanted Diamonds a New York City–based online retailer that has had a showroom in Times Square(Closed recently). I worked as a UI/UX designer for designing their Website&App. Welcome to visit their website in the below demo button. You also can check my design by click "Design PDF" button below.
+                        </CardText>
                         <CardActions border>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}>GitHub</Button>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}>CodeCamp</Button>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="https://getclark.io/" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>LiveDemo</a></Button>
+                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="https://www.maipdf.com/pdf/?email=enhs/qzdOfTJQ" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>Design PDF</a></Button>
+                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="https://www.maipdf.com/pdf/?email=enhs/qzdOfTJQ" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>LiveDemo</a></Button>
                         </CardActions>
                         <CardMenu style={{ color: '#fff' }}>
-                            <IconButton name="share" href="http://field-test.co" target="_blank" />
+                            <IconButton name="share" href="#" target="_blank" colored />
                         </CardMenu>
                     </Card >
 
                     {/* Project 02 */}
                     <Card shadow={5} style={{ minWidth: '360', minHeight: '510', margin: 'auto' }}>
-                        <CardTitle style={{ color: "#bdc3c7", height: '360px', background: 'url(https://yt3.ggpht.com/a/AGF-l78E1OeuCR4yXJORN0Ojy3bjcZKzsb0jqrMsgg=s240-c-k-c0xffffffff-no-rj-mo) center/cover' }}>Galore TV App</CardTitle>
-                        <CardText>
-                            Galore TV App
-                            Hosted on Heroku <a href="https://git.heroku.com/galoretv-api.git" target="_blank">https://git.heroku.com/galoretv-api.git</a>
-                            YouTube Scraper API endpoint <a href="https://galoretv-api.herokuapp.com/" target="_blank">https://galoretv-api.herokuapp.com/</a>(route endpoint)
-                    </CardText>
+                        <CardTitle id="card-title" style={{ color: "black", height: '360px', background: 'url(https://i.pinimg.com/originals/08/20/a3/0820a3bb9a23939f20dc58972c8f9a92.jpg) bottom/cover' }}
+                        >Baby Phat</CardTitle>
+                        <CardText style={{ height: '90', overflow: "auto" }}>
+                            Baby phat is an American apparel brand. Baby Phat's celebrity fans include Alicia Keys, Rihanna, Chrissy Teigen, Kim Kardashian, Christina Millian, Britney Spears, Missy Elliot and Monica (many of whom sat front row during her Fashion Week performances or attended the highly sought-after after-parties). I worked as a UI/UX designer for designing their ecommerce Website&App. Welcome to visit their website in the below demo button. You also can check my design by click "Design PDF" button below.
+                        </CardText>
                         <CardActions border>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}>GitHub</Button>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}>CodeCamp</Button>
-                            <Button colored><a href="https://galoremag.com/" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>LiveDemo</a></Button>
+                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="https://www.maipdf.com/pdf/?email=enI8y72w3/EtI" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>Design PDF</a></Button>
+                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="https://babyphat.com/" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>LiveDemo</a></Button>
                         </CardActions>
                         <CardMenu style={{ color: '#fff' }}>
-                            <IconButton name="share" href="https://galoremag.com/" target="_blank" colored />
+                            <IconButton name="share" href="https://babyphat.com/" target="_blank" />
                         </CardMenu>
                     </Card >
-
                     {/* Project 03 */}
                     <Card shadow={5} style={{ minWidth: '360', minHeight: '510', margin: 'auto' }}>
-                        <CardTitle style={{ color: "#fff", height: '360px', background: 'url(https://dcassetcdn.com/design_img/2496504/580863/580863_13211572_2496504_7a53dddf_thumbnail.png) center/cover' }}>Zion's Website</CardTitle>
-                        <CardText>
-                            This is my personal website which is a collection of my full-stack works and Designes.
-
-                    </CardText>
+                        <CardTitle id="card-title" style={{ color: "black", height: '360px', background: 'url(https://i.loli.net/2020/02/26/r4XHeUu6TCzMGoq.png) center/cover' }}
+                        >Dwell CBD</CardTitle>
+                        <CardText style={{ height: '90' }}>
+                            Dwell is a lifestyle brand, mental impacts, helps people slow down, be more mindful, take care of themselves Direct to consumer for foreseeable future.
+                            I worked as a UI/UX designer for designing their Website&App&Brand. Welcome to visit their website in the below demo button. You also can check my design by click "Design PDF" button below.
+                        </CardText>
                         <CardActions border>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}>GitHub</Button>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}>CodeCamp</Button>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="http://smokey.fm/" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>LiveDemo</a></Button>
+                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="https://www.maipdf.com/pdf/?email=eniNEtJlm1FC." target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>Design PDF</a></Button>
+                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="https://dwellcbd.com/" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>LiveDemo</a></Button>
                         </CardActions>
                         <CardMenu style={{ color: '#fff' }}>
-                            <IconButton name="share" href="http://smokey.fm/" target="_blank" />
+                            <IconButton name="share" href="#" target="_blank" colored />
                         </CardMenu>
                     </Card >
                 </div>
             )
         } else if (this.state.activeTab === 1) {
             return (
-                <div><h1>This is Other Designs</h1></div>
+                <div className="projects-grid">
+
+                </div>
             )
         }
     }

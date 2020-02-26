@@ -83,7 +83,7 @@ class Resume extends Component {
                         />
                         <Skills
                             skill="Java"
-                            progress={30}
+                            progress={18}
                         />
                         <hr style={{ borderTop: '1px dashed #bdc3c7', width: "89%", left: 0 }} />
                         <h5>Web Frameworks</h5>
@@ -93,7 +93,7 @@ class Resume extends Component {
                         />
                         <Skills
                             skill="Angular"
-                            progress={60}
+                            progress={72}
                         />
                         <Skills
                             skill="ASP.NET Core"
@@ -105,11 +105,11 @@ class Resume extends Component {
                         />
                         <Skills
                             skill="Flask"
-                            progress={30}
+                            progress={45}
                         />
                         <Skills
                             skill="Express"
-                            progress={30}
+                            progress={55}
                         />
                         <hr style={{ borderTop: '1px dashed #bdc3c7', width: "89%", left: 0 }} />
                         <h5>Database</h5>
@@ -119,7 +119,7 @@ class Resume extends Component {
                         />
                         <Skills
                             skill="SQLite"
-                            progress={60}
+                            progress={66}
                         />
                         <hr style={{ borderTop: '1px dashed #bdc3c7', width: "89%", left: 0 }} />
                         <h5>Package Managers</h5>
@@ -148,6 +148,13 @@ class Resume extends Component {
 
                         <h2>Work Experiences</h2>
                         <hr style={{ borderTop: '1.5px solid white', width: "97%" }} />
+                        <Experience
+                            startYear={2018}
+                            endYear={2020}
+                            experienceName="Frontend Developer & UI/UX"
+                            experienceDescription="2018 to 2020 I worked as a Frontend Developer & UI/UX designer. I work closely with Baby Phat, Galore, Enchanted Diamond, Dwell .etc to design their website&app and build the front end application for these client."
+                            link="https://instinct.is/"
+                        />
                         <Experience
                             startYear={2018}
                             endYear={2019}

@@ -17,7 +17,7 @@ class Projects extends Component {
                         <CardTitle id="card-title" style={{ color: "#fff", height: '360px', background: 'url(https://i0.wp.com/instinct.is/wp-content/uploads/2017/08/woman-cart-grocery-iphone-2.jpg?resize=2000%2C900&ssl=1) center/cover' }}
                         >Clark.io Website</CardTitle>
                         <CardText style={{ height: "120px", overflow: "auto" }}>
-                            Public informational website for Field Test, <a href="http://field-test.co" target="_blank">http://field-test.co</a> a subsidiary of The Lion'Esque Group.
+                            Clark.io is a subsidiary of The Lion'Esque Group. It provides a virtual shopping-cart product based RFID chip. I build the react-website for them.
                     </CardText>
                         <CardActions border>
                             <Button style={{ textDecoration: "none", color: "#005C97" }}>GitHub</Button>
@@ -57,10 +57,10 @@ class Projects extends Component {
                         <CardActions border>
                             <Button style={{ textDecoration: "none", color: "#005C97" }}>GitHub</Button>
                             <Button style={{ textDecoration: "none", color: "#005C97" }}>CodeCamp</Button>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="http://smokey.fm/" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>LiveDemo</a></Button>
+                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="http://zionhung.com" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>LiveDemo</a></Button>
                         </CardActions>
                         <CardMenu style={{ color: '#fff' }}>
-                            <IconButton name="share" href="http://smokey.fm/" target="_blank" />
+                            <IconButton name="share" href="http://zionhung.com" target="_blank" />
                         </CardMenu>
                     </Card >
                 </div>
@@ -109,31 +109,11 @@ class Projects extends Component {
                 <div className="projects-grid">
                     {/* Project 01 */}
                     <Card shadow={5} style={{ minWidth: '360', minHeight: '510', margin: 'auto' }}>
-                        <CardTitle id="card-title" style={{ color: "#fff", height: '360px', background: 'url(https://www.qwoptechnologies.com/images/student-management.jpg) top/180%' }}
-                        >Student Management System</CardTitle>
-                        <CardText>
-                            A calendar built based of Django’s HTMLCalendar. The end user can add, edit, and delete events on this calendar. The calendar allows the user to navigate to the next and previous month, along with a yearly view to navigate to the specific month and year indicated. The calendar can also switch between a light and dark view.
-                    </CardText>
-                        <CardActions border>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}>GitHub</Button>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}>CodeCamp</Button>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="http://54.215.250.166/calendar/" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>LiveDemo</a></Button>
-                        </CardActions>
-                        <CardMenu style={{ color: '#fff' }}>
-                            <IconButton name="share" href="http://54.215.250.166/calendar/" target="_blank" />
-                        </CardMenu>
-                    </Card >
-                </div>
-            )
-        } else if (this.state.activeTab === 3) {
-            return (
-                <div className="projects-grid">
-                    {/* Project 01 */}
-                    <Card shadow={5} style={{ minWidth: '360', minHeight: '510', margin: 'auto' }}>
                         <CardTitle id="card-title" style={{ color: "#fff", height: '360px', background: 'url(https://pbs.twimg.com/profile_images/1069715216307376128/_1uSHYr1_400x400.jpg) bottom/cover' }}
-                        >CG-Galaxy Website&System</CardTitle>
+                        >Art-Galaxy Website&System</CardTitle>
                         <CardText>
-                            A calendar built based of Django’s HTMLCalendar. The end user can add, edit, and delete events on this calendar. The calendar allows the user to navigate to the next and previous month, along with a yearly view to navigate to the specific month and year indicated. The calendar can also switch between a light and dark view.
+                            A website and company assets management App was built with C#&ASP.NET.
+                            User can login as client or manager. Customer can view product by its category and send request to server to get quote. Manage can upload content and classify the content based on OOP Model, also do some basic CRUD for the content and employees.
                     </CardText>
                         <CardActions border>
                             <Button style={{ textDecoration: "none", color: "#005C97" }}>GitHub</Button>
@@ -146,6 +126,27 @@ class Projects extends Component {
                     </Card >
                 </div>
             )
+        } else if (this.state.activeTab === 3) {
+            return (
+                <div className="projects-grid">
+                    {/* Project 01 */}
+                    <Card shadow={5} style={{ minWidth: '360', minHeight: '510', margin: 'auto' }}>
+                        <CardTitle id="card-title" style={{ color: "#fff", height: '360px', background: 'url(https://www.qwoptechnologies.com/images/student-management.jpg) top/180%' }}
+                        >Student Management System</CardTitle>
+                        <CardText>
+                            A student management system built based of Angular&NodeJS. The end user can add, edit, and delete events on this calendar. The calendar allows the user to navigate to the next and previous month, along with a yearly view to navigate to the specific month and year indicated. The calendar can also switch between a light and dark view.
+                    </CardText>
+                        <CardActions border>
+                            <Button style={{ textDecoration: "none", color: "#005C97" }}>GitHub</Button>
+                            <Button style={{ textDecoration: "none", color: "#005C97" }}>CodeCamp</Button>
+                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="http://54.215.250.166/calendar/" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>LiveDemo</a></Button>
+                        </CardActions>
+                        <CardMenu style={{ color: '#fff' }}>
+                            <IconButton name="share" href="http://54.215.250.166/calendar/" target="_blank" />
+                        </CardMenu>
+                    </Card >
+                </div>
+            )
         }
     }
 
@@ -154,16 +155,16 @@ class Projects extends Component {
             <div className="category-tabs">
                 <Tabs id="tabs" activeTab={this.state.activeTab} onChange={(tabId) => this.setState({ activeTab: tabId })} ripple>
                     <Tab className="tab" style={{ color: '#7d7d7d' }}>
-                        React & JavaScript
+                        React & JSX
                     </Tab>
                     <Tab className="tab" style={{ color: '#7d7d7d' }}>
                         Django & Python
                     </Tab>
                     <Tab className="tab" style={{ color: '#7d7d7d' }}>
-                        Angular & Node.JS
+                        ASP.NET Core & C#
                     </Tab>
                     <Tab className="tab" style={{ color: '#7d7d7d' }}>
-                        C# & ASP
+                        Angular & Node.JS
                     </Tab>
                 </Tabs>
                 <section className="projects-grid">

@@ -11,7 +11,7 @@ import Design from './design';
 const Main = () => (
     <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route path="/about" component={AboutMe} />
+        <Route path="/aboutnotworking" component={AboutMe} />
         <Route path="/contact" component={Contact} />
         <Route path="/projects" component={Projects} />
         <Route path="/design" component={Design} />
