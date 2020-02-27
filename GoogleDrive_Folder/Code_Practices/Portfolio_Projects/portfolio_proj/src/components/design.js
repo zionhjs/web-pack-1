@@ -75,10 +75,10 @@ class Projects extends Component {
             <div className="category-tabs">
                 <Tabs id="tabs" activeTab={this.state.activeTab} onChange={(tabId) => this.setState({ activeTab: tabId })} ripple>
                     <Tab className="tab" style={{ color: '#7d7d7d' }}>
-                        UI/UX-Page-One
+                        UI/UX-One
                     </Tab>
                     <Tab className="tab" style={{ color: '#7d7d7d' }}>
-                        UI/UX-Page-Two
+                        UI/UX-Two
                     </Tab>
                 </Tabs>
                 <section className="projects-grid">

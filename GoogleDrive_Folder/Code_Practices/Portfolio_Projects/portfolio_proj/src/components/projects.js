@@ -17,7 +17,13 @@ class Projects extends Component {
                         <CardTitle id="card-title" style={{ color: "#fff", height: '360px', background: 'url(https://i0.wp.com/instinct.is/wp-content/uploads/2017/08/woman-cart-grocery-iphone-2.jpg?resize=2000%2C900&ssl=1) center/cover' }}
                         >Clark.io Website</CardTitle>
                         <CardText style={{ height: "120px", overflow: "auto" }}>
-                            Clark.io is a subsidiary of The Lion'Esque Group. It provides a virtual shopping-cart product based RFID chip. I build the react-website for them.
+                            Clark.io is a subsidiary of The Lion'Esque Group. It provides a virtual shopping-cart product based RFID chip. I involved in all the react part for the website.
+                            For the component:
+                            Mainly about 1.Signup/Register/Subscription Forms(associated with Mailchimp) and front-end html/css
+                            All the components using javascript/JSX to modify the state or manipulating DOM using material-ui
+                            APIs:
+                            Built a BarChart/PieChart showing customer activities with Recharts using data from collections.
+                            Using Mailchimp to manage subscitption and contact forms.
                     </CardText>
                         <CardActions border>
                             <Button style={{ textDecoration: "none", color: "#005C97" }}>GitHub</Button>
@@ -51,11 +57,10 @@ class Projects extends Component {
                     <Card shadow={5} style={{ minWidth: '360', minHeight: '510', margin: 'auto' }}>
                         <CardTitle style={{ color: "#fff", height: '360px', background: 'url(https://dcassetcdn.com/design_img/2496504/580863/580863_13211572_2496504_7a53dddf_thumbnail.png) center/cover' }}>Zion's Website</CardTitle>
                         <CardText style={{ height: "120px", overflow: "auto" }}>
-                            This is my personal website which is a collection of my full-stack works and Designes.
-
-                    </CardText>
+                            This is my personal website which is a collection of my full-stack works and Designes. This website heavily use React's component system and routing system. Besides that heavily on DOM manipulation and React State&Props changing.
+                        </CardText>
                         <CardActions border>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}>GitHub</Button>
+                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="https://github.com/zionhung/Calendar.git" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>GitHub</a></Button>
                             <Button style={{ textDecoration: "none", color: "#005C97" }}>CodeCamp</Button>
                             <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="http://zionhung.com" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>LiveDemo</a></Button>
                         </CardActions>
@@ -76,7 +81,7 @@ class Projects extends Component {
                             A calendar built based of Django’s HTMLCalendar. The end user can add, edit, and delete events on this calendar. The calendar allows the user to navigate to the next and previous month, along with a yearly view to navigate to the specific month and year indicated. The calendar can also switch between a light and dark view.
                     </CardText>
                         <CardActions border>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}>GitHub</Button>
+                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="https://github.com/zionhung/Calendar.git" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>GitHub</a></Button>
                             <Button style={{ textDecoration: "none", color: "#005C97" }}>CodeCamp</Button>
                             <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="http://54.215.250.166/calendar/" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>LiveDemo</a></Button>
                         </CardActions>
@@ -91,10 +96,10 @@ class Projects extends Component {
                         >Employee Backend Mangement System</CardTitle>
                         <CardText style={{ height: "120px", overflow: "auto" }}>
                             Try login as Admin -- Or create new user<p style={{ color: "#3d72b4" }}>UserName: adminuser@gmail.com PW:adminuser</p>
-                            A employee management system is build with Django's ORM and validation. Within this app, employee can clockin/out, write reports for what they have done. Based on that, the employer can track employee's performance, then decide rewards them or remind them to work harder. Employer will be able to do the full CRUD to change employee's data in terms of account-info/clock-info or give employee authority to access more for this system.
+                            A employee management system is build with Django's ORM and validation. Within this app, employee can clockin/out, write reports for what they have done. Based on that, the employer can track employee's performance, then decide rewards them or remind them to work harder. Employer will be able to do the full CRUD to change employee's data in terms of account-info/clock-info or give employee authority to access more for this system. This is a full-stack Django project.
                         </CardText>
                         <CardActions border>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}>GitHub</Button>
+                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="https://github.com/zionhung/EmployeeManagementSystem.git" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>GitHub</a></Button>
                             <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="https://www.maipdf.com/pdf/?email=enifj1/5F6oMs" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>Project WireFrame</a></Button>
                             <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="http://52.53.232.172/" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>LiveDemo</a></Button>
                         </CardActions>
@@ -133,11 +138,14 @@ class Projects extends Component {
                     <Card shadow={5} style={{ minWidth: '360', minHeight: '510', margin: 'auto' }}>
                         <CardTitle id="card-title" style={{ color: "#fff", height: '360px', background: 'url(https://www.qwoptechnologies.com/images/student-management.jpg) top/180%' }}
                         >Student Management System</CardTitle>
-                        <CardText>
-                            A student management system built based of Angular&NodeJS. The end user can add, edit, and delete events on this calendar. The calendar allows the user to navigate to the next and previous month, along with a yearly view to navigate to the specific month and year indicated. The calendar can also switch between a light and dark view.
+                        <CardText style={{ height: "120px", overflow: "auto" }}>
+                            Try login as Admin -- Or create new user<p style={{ color: "#3d72b4" }}>UserName: admin PW:admin</p>
+                            Try login as User -- Or create new user<p style={{ color: "#3d72b4" }}>UserName: user PW:user</p>
+                            A student management system built based of Angular&NodeJS. Admin can manage all user and courses do the full CRUD manipulation. User can login to check their schedule and CRUD on their selected courses.
+                            I built the Angular(with TypeScript) part of this application.
                     </CardText>
                         <CardActions border>
-                            <Button style={{ textDecoration: "none", color: "#005C97" }}>GitHub</Button>
+                            <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="https://github.com/zionhung/StudentManagement.git" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>GitHub</a></Button>
                             <Button style={{ textDecoration: "none", color: "#005C97" }}>CodeCamp</Button>
                             <Button style={{ textDecoration: "none", color: "#005C97" }}><a href="http://54.215.250.166/calendar/" target="_blank" style={{ textDecoration: "none", color: "#005C97" }}>LiveDemo</a></Button>
                         </CardActions>

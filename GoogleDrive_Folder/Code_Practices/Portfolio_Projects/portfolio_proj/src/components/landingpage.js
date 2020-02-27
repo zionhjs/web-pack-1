@@ -14,7 +14,7 @@ class LandingPage extends Component {
                             <p style={{ width: "60%", margin: "0 auto", lineHeight: "27px" }}>HTML/CSS | Bootstrap | JQuery | JavaScript&NodeJS | C# | Python | Java | React | Angular | Django | Flask | Express | MongoDB | SQLite | Angular(MEAN)| ASP.NET Core | NPM | NuGet | Webpack | Gulp | Redux</p>
                             <div className="social-links">
                                 {/* LinkedIn */}
-                                <a href="www.linkedin.com/in/zion-hung-a3214119a" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.linkedin.com/in/zion-hung-a3214119a" target="_blank" rel="noopener noreferrer">
                                     <i className="fa fa-linkedin-square" aria-hidden="true" />
                                 </a>
                                 {/* GitHub */}
@@ -26,7 +26,7 @@ class LandingPage extends Component {
                                     <i className="fa fa-code" aria-hidden="true" />
                                 </a>
                                 {/* YouTube */}
-                                <a href="http://youtube.com" target="_blank" rel="noopener noreferrer">
+                                <a href="/#" rel="noopener noreferrer">
                                     <i className="fa fa-youtube-square" aria-hidden="true" />
                                 </a>
                             </div>

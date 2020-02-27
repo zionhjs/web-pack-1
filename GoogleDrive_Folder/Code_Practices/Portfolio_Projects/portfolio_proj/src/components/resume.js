@@ -70,10 +70,6 @@ class Resume extends Component {
                             progress={87}
                         />
                         <Skills
-                            skill="Python"
-                            progress={90}
-                        />
-                        <Skills
                             skill="JavaScript ES6 & NodeJS"
                             progress={87}
                         />
@@ -82,8 +78,8 @@ class Resume extends Component {
                             progress={84}
                         />
                         <Skills
-                            skill="Java"
-                            progress={18}
+                            skill="Python"
+                            progress={90}
                         />
                         <hr style={{ borderTop: '1px dashed #bdc3c7', width: "89%", left: 0 }} />
                         <h5>Web Frameworks</h5>
@@ -142,8 +138,12 @@ class Resume extends Component {
                             progress={60}
                         />
                         <Skills
-                            skill="Redux"
+                            skill="React-Redux"
                             progress={50}
+                        />
+                        <Skills
+                            skill="GitHub"
+                            progress={75}
                         />
 
                         <h2>Work Experiences</h2>
