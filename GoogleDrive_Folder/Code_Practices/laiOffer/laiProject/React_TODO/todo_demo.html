@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+    <title>Todo-App</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="tect/babel">
+        class App extends React.Component{
+            constrcutor(){
+                super();
+                this.state = {
+                    todos: [
+                        { id : 1, title : "task1", done : false},
+                        { id : 2, title : "task2", done : false},
+                        { id : 3, title : "task3", done : true},
+                        { id : 4, title : "task4", done : false},
+                        { id : 5, title : "task5", done : true},
+                        { id : 6, title : "task6", done : false}
+                    ],
+                    type: 1 // 1 - all, 2 - done, 3 - not done
+                }
+            }
+            changFn = ()={
+                this.props.todos.done
+            }
+            render(){
+                console.log(this.state.todos)
+                return (
+                    <div>
+                        <h1>Todo-App<h1/>
+                        <HD addToDo={this.addItem}/>
+                        <BD 
+                            todoList={this.state.todos}
+                            updateItem={this.updateItem}
+                            deleteItem={this.deleteItem}
+                        />
+                        <FT />
+                    </div>
+                )
+            }
+            updateItem = (id, status) => {
+                this.setState({
+                    todos:this.state.todos.map(item => item.id === id ? {...item, done:status} : item);
+                })
+            }
+            addItem = (item) => {
+                console.log(item);
+                this.setState({
+                    todos:[...this.state.todos, {id:Math.floor(Math.random()*100), title:item, done:false}]
+                })
+            }
+            deleteItem = (id) => {
+                this.setState({
+                    todos:this.state.todos.filter(item => item.id !== id)
+                })
+            }
+        }
+        class HD extends React.Component{
+            constrcutor(){
+                super();
+                //define ref
+                this.input = React.createRef();
+            }
+            render(){
+                return (
+                    <div>
+                    <input type="text" 
+                        ref={this.input}
+                    />
+                    <button onClick={
+                        () => {
+                            //get ref
+                            console.log(this.input.current.value)
+                            //use call-back func
+                            this.props.addItem(this.input.current.value)
+                        }
+                    }>add new task</button>
+                    </div>
+                )
+            }
+        }
+        class Item extends React.Component{
+            render(){
+                return (
+                    <div>
+                        <input type="checkbox" 
+                            checked={this.props.data.done}
+                            onChange={
+                                ()=>{
+                                    this.props.updateHelper(this.props.data.id, !this.props.data.done);
+                                }
+                            }
+                        />
+                        <span>this.props.data.title</span>
+                        <button onClick={
+                            () => {
+                                this.props.deleteHelper(this.props.data.id)
+                            }
+                        }>delete</button>
+                    </div>
+                )
+            }
+        }
+        class BD extends React.Component{
+            render(){
+                console.log(this.props)
+                return (
+                    <div>
+                        {
+                            this.props.todoList.map((item, index) =>{
+                                console.log(item);
+                                return <Item
+                                        key{item.id} 
+                                        data={item}
+                                        updateHelper={this.props.updateHelper}
+                                        deleteHelper={this.props.deleteItem}
+                                        />
+                            });
+                        }
+                    </div>
+                )
+            }
+        }
+        class FT extends React.Component{
+            render(){
+                return (
+                    <div>FT</div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <APP />
+            document.getELementById("root")
+        )
+    </script>
+</body>
+
+</html>

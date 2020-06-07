@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        class Parent extends React.component {
+            constructor() {
+                super();
+                //this.state => private props
+                this.state = {
+                    isShow: false,
+                    a: 870
+                }
+                this.handleClick = this.handleClick.bind(this);
+            }
+            render() {
+                return (
+                    <div>
+                        <h1>This is Parent</h1>
+                        <button onClick={
+                            () => {
+                                this.handleClick
+                            }
+                        }>show/hide</button>
+                        <br />
+                        <button onClick={
+                            () => {
+                                this.setState({ a: this.state.a + 10 })
+                            }
+                        }>Add 10</button>
+                        <hr />
+                        {
+                            this.state.isShow ? <Child num={this.state.a} /> : null
+                        }
+                    </div>
+                )
+            }
+            handleClick() {
+                this.setState({
+                    isShow: !this.state.isShow
+                })
+            }
+        }
+        class Child extends React.component {
+            constructor() {
+                super();
+                console.log('2 => construct');
+                this.state = {
+                    data: 880
+                }
+            }
+            render() {
+                console.log("2.3 -> render")
+                return (
+                    <div>
+                        <h2>This is Child</h2>
+                        <h2>number from Parent{this.props.num}</h2>
+                        <h2>its own data {this.state.data}</h2>
+                        <button onClick={
+                            () => {
+                                this.setState({ data: this.state.data + 20 })
+                            }
+                        }>click me to add 20</button>
+                    </div>
+                )
+            }
+            static getDerivedStateFromProps(curProps, curState) {
+                console.log("2.2 -> getDSFP", curProps, curState)
+                //e.g. how to use getDSFP  => get the curState and replace it with return
+                if (curProps.num !== curState.data) {
+                    return { data: "hello react" }
+                }
+                return null;
+            }
+            shouldComponentUpdate(curProps, curState) {
+                //true || false
+                console.log("3.2 -> shouldUpdate", curProps, curState)
+                // if (curProps.num === curState.data) {
+                //     return false;
+                // }
+                return true;
+            }
+            componentDidMount() {
+                console.log("2.4 -> componentDM")
+            }
+            getSnapshotBeforeUpdate(preProps, preState) {
+                console.log("3.3 -> shoudBefore", preProps, preState);
+                if (preProps.num === 890) {
+                    return { "firstName": "Jone" }
+                }
+            }
+            componentDidMount(preProps, preState, snapShot) {
+                console.log("3.4 -> didUpdate", preProps, preState, snapShot);
+                if (snapShot) {
+                    this.setState({
+                        data: snapShot.firstName
+                    })
+                }
+            }
+            componentWillUnmount() {
+                console.log("3.5 -> willUnmount")
+            }
+        }
+        ReactDOM.render(
+            <Parent />,
+            document.getElementById('app')
+        )
+    </script>
+</body>
+
+</html>

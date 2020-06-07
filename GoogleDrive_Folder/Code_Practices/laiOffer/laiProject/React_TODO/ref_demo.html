@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+                this.myRef = React.createRef();
+            }
+
+            render() {
+                return (
+                    <div>
+                        <p>
+                            <input type="text" ref="myinput1" />
+                            <input type="text" ref="myinput2" />
+                            <input type="text" ref="myinput3" />
+                        </p>
+                        <p>
+                            <button onClick={
+                                () => {
+                                    console.log(this.refs.myinput);
+                                    console.log(this.refs.myinput.value);
+                                }
+                            }>click me</button>
+                        </p>
+
+                        <p ref={this.myRef} onClick={
+                            () => {
+                                console.log("refs:", this.refs)
+                                console.log(this.myRef)
+                                console.log(this.myRef.current)
+                            }
+                        }>this is ref</p>
+
+                        <input ref={this.myRef} onChange={
+                            () => {
+                                console.log("refs:", this.refs)
+                                console.log("MyRef is:", this.myRef)
+                                console.log("current_text:", this.myRef.current.value)
+                            }
+                        } />
+
+                        <div ref={this.myRef} onClick={
+                            () => {
+                                console.log("refs:", this.refs)
+                                console.log("MyRef is:", this.myRef)
+                                console.log("current_text:", this.myRef.current)
+                            }
+                        }>This is div!</div>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+
+</html>
